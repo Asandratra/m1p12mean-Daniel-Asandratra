@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.log(err));
 
 app.get('/', (req, res) => {
-    res.send("m1p12-Daniel-Asandratra-Backend is live")
+    res.send("m1p12mean-Daniel-Asandratra-Backend is live")
 })
 
 //Routes
