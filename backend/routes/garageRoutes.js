@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Garage = require('../model/Garage');
+const Employee = require('../model/Employee');
 
 const limit = 10;
 
@@ -24,6 +25,16 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+//Get one garage by id
+router.get('/:id', async (req, res) => {
+    try {
+        const garage = await Garage.findById(req.params.id);
+        res.json(garage);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
 
 //Search for garages with pagination
 router.get('/search/:page', async (req, res) => {
@@ -49,16 +60,6 @@ router.get('/search/:page', async (req, res) => {
         };
 
         res.json(response);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-})
-
-//Get one garage by id
-router.get('/:id', async (req, res) => {
-    try {
-        const garage = await Garage.findById(req.params.id);
-        res.json(garage);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
