@@ -3,6 +3,8 @@ const router = express.Router();
 const DemandeRDV = require('../model/DemandeRDV');
 const { app } = require('../server');
 
+const limit = 10;
+
 //Create a DemandeRDV
 router.post('/', async (req, res) => {
     try{
@@ -23,6 +25,49 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+//Get one demande rendez-vous by id
+router.get('/:id', async (req, res) => {
+    try {
+        const demandeRDV = await DemandeRDV.findById(req.params.id)
+            .populate("idClient")
+            .populate("idGarage");
+        res.json(demandeRDV);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
+//Search for demandes with pagination
+router.get('/search/:page', async (req, res) => {
+    try {
+        const count = await DemandeRDV.countDocuments();
+        const demandesRDV = await DemandeRDV.find(req.body)
+            .skip((req.params.page - 1)*limit)
+            .limit(limit);
+        
+        const response = {
+            status : 200,
+            nombreElement : demandes.length,
+            page : parseInt(req.params.page),
+            pageMax : parseInt((count/limit)+(count%limit)),
+            demandesRDV : demandesRDV.map(demandeRDV => ({
+                idClient : demandeRDV.idClient,
+                idGarage : demandeRDV.idGarage,
+                dateHeure : demandeRDV.dateHeure,
+                status : demandeRDV.status,
+                _id : demandeRDV._id,
+                createdAt : demandeRDV.createdAt,
+                updatedAt : demandeRDV.updatedAt,
+                __v: demandeRDV.__v
+            }))
+        };
+
+        res.json(response);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
 
 //Update a DemandeRDV by id
 router.put('/:id', async (req, res) => {

@@ -10,7 +10,7 @@ const ClientSchema = new mongoose.Schema({
     tel : {type: String, require: true, unique: true}
 }, { timestamps: true }, {collection: 'client'});
 
-//Cryptage de mot de passe lors de modification ou de nouveau client
+//Cryptage de mot de passe lors de nouveau client
 ClientSchema.pre('save', function(next) {
     var client = this;
     if(!client.isModified('motdepasse')) return next();
