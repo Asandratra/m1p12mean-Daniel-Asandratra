@@ -21,7 +21,8 @@ router.post('/signup', async (req, res) => {
         const employee = await Employee.findOne({
             username : `${username}`,
             estActif : true
-        });
+        })
+            .populate('idRole');
         if(!employee) throw new Error("Pseudo ou mot de passe incorrecte.");
         if(employee){
             employee.checkMotDePasse(motdepasse, function(err, isMatch) {

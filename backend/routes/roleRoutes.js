@@ -13,6 +13,15 @@ router.post('/', async (req, res) => {
     }
 });
 
+//Search for Roles
+router.post('/search', async (req, res) => {
+    try {
+        
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+})
+
 //Read all Roles
 router.get('/', async (req, res) => {
     try{

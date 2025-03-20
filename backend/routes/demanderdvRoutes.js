@@ -16,6 +16,40 @@ router.post('/', async (req, res) => {
     }
 });
 
+//Search for demandes with pagination
+router.post('/search/:page', async (req, res) => {
+    try {
+        const count = await DemandeRDV.countDocuments();
+        const demandesRDV = await DemandeRDV.find(req.body)
+            .populate('idClient')
+            .populate('idGarage')
+            .sort([['dateHeure',1],['demandesRDV.status',-1]])
+            .skip((req.params.page - 1)*limit)
+            .limit(limit);
+        
+        const response = {
+            status : 200,
+            nombreElement : demandesRDV.length,
+            page : parseInt(req.params.page),
+            pageMax : parseInt((count/limit)+(count%limit)),
+            demandesRDV : demandesRDV.map(demandeRDV => ({
+                idClient : demandeRDV.idClient,
+                idGarage : demandeRDV.idGarage,
+                dateHeure : demandeRDV.dateHeure,
+                status : demandeRDV.status,
+                _id : demandeRDV._id,
+                createdAt : demandeRDV.createdAt,
+                updatedAt : demandeRDV.updatedAt,
+                __v: demandeRDV.__v
+            }))
+        };
+
+        res.json(response);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
 //Read all DemandeRDVs
 router.get('/', async (req, res) => {
     try{
@@ -33,37 +67,6 @@ router.get('/:id', async (req, res) => {
             .populate("idClient")
             .populate("idGarage");
         res.json(demandeRDV);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-})
-
-//Search for demandes with pagination
-router.get('/search/:page', async (req, res) => {
-    try {
-        const count = await DemandeRDV.countDocuments();
-        const demandesRDV = await DemandeRDV.find(req.body)
-            .skip((req.params.page - 1)*limit)
-            .limit(limit);
-        
-        const response = {
-            status : 200,
-            nombreElement : demandes.length,
-            page : parseInt(req.params.page),
-            pageMax : parseInt((count/limit)+(count%limit)),
-            demandesRDV : demandesRDV.map(demandeRDV => ({
-                idClient : demandeRDV.idClient,
-                idGarage : demandeRDV.idGarage,
-                dateHeure : demandeRDV.dateHeure,
-                status : demandeRDV.status,
-                _id : demandeRDV._id,
-                createdAt : demandeRDV.createdAt,
-                updatedAt : demandeRDV.updatedAt,
-                __v: demandeRDV.__v
-            }))
-        };
-
-        res.json(response);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

@@ -16,6 +16,36 @@ router.post('/', async (req, res) => {
     }
 });
 
+//Search for garages with pagination
+router.post('/search/:page', async (req, res) => {
+    try {
+        const count = await Garage.countDocuments();
+        const garages = await Garage.find(req.body)
+            .skip((req.params.page - 1)*limit)
+            .limit(limit);
+        
+        const response = {
+            status : 200,
+            nombreElement : garages.length,
+            nombreMaxElement : count,
+            page : parseInt(req.params.page),
+            pageMax : parseInt((count/limit)+(count%limit)),
+            garages : garages.map(garage => ({
+                localisation : garage.localisation,
+                place : garage.place,
+                _id : garage._id,
+                createdAt : garage.createdAt,
+                updatedAt : garage.updatedAt,
+                __v: garage.__v
+            }))
+        };
+
+        res.json(response);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
 //Read all Garages
 router.get('/', async (req, res) => {
     try{
@@ -34,36 +64,39 @@ router.get('/:id', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-})
+});
 
-//Search for garages with pagination
-router.get('/search/:page', async (req, res) => {
+//Get one garage by id as client
+router.get('/asClient/:id', async (req, res) => {
     try {
-        const count = await Garage.countDocuments();
-        const garages = await Garage.find(req.body)
-            .skip((req.params.page - 1)*limit)
-            .limit(limit);
-        
-        const response = {
-            status : 200,
-            nombreElement : garages.length,
-            page : parseInt(req.params.page),
-            pageMax : parseInt((count/limit)+(count%limit)),
-            garages : garages.map(garage => ({
-                localisation : garage.localisation,
-                place : garage.place,
-                _id : garage._id,
-                createdAt : garage.createdAt,
-                updatedAt : garage.updatedAt,
-                __v: garage.__v
-            }))
-        };
-
-        res.json(response);
+        const garage = await Garage.findById(req.params.id)
+            .populate({
+                path : 'employees',
+                match : { idRole : "67d15b7442ec1c24c28bcd2a", estActif : true },
+                limit : 1
+            })
+            .lean();
+        res.json(garage);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-})
+});
+
+//Get one garage by id as manager or admin
+router.get('/asManager/:id', async (req, res) => {
+    try {
+        const garage = await Garage.findById(req.params.id)
+            .populate({
+                path : 'demandesRDV',
+                match : { status : { $lt : 2 } }
+            })
+            .sort([['dateHeure',1],['demandesRDV.status',-1]])
+            .lean();
+        res.json(garage);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 //Update a Garage by id
 router.put('/:id', async (req, res) => {
