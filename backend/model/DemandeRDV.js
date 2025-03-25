@@ -7,4 +7,5 @@ const DemandeRDVSchema = new mongoose.Schema({
     status : {type: Number, default: 0}
 }, { timestamps: true }, {collection: 'demandeRDV'});
 
+
 module.exports = mongoose.model('DemandeRDV', DemandeRDVSchema);
