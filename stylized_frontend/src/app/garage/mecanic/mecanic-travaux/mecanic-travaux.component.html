@@ -1,0 +1,42 @@
+<div class="card d-flex justify-content-center">
+    <div class="card-body col-x1-12">
+        <h5 class="mb-4">Travaux</h5>
+        <div class="card tbl-card">
+            <div class="table-responsive">
+            <table class="table table-hover mb-0" style="font-size: larger;">
+                <thead >
+                <tr>
+                    <th>MATRICULE</th>
+                    <th class="text-center">CLIENT</th>
+                    <th class="text-center">TEL. CLIENT</th>
+                    <th class="text-center">DEBUT DE TRAVAIL</th>
+                    <th class="text-center">ESTIMATION DE FIN</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @for (travail of travaux; track travail) {
+                    <tr>
+                        <td>{{ travail.matricule }}</td>
+                        <td class="text-center">{{ travail.nomClient }}</td>
+                        <td class="text-center">{{ travail.telClient }}</td>
+                        <td class="text-center">{{ travail.dateDebut | date : 'dd/MM/yyyy à HH:mm' }} </td>
+                        <td class="text-center">{{ travail.estimationFin | date : 'dd/MM/yyyy à HH:mm' }} </td>
+                        <td class="text-end">
+                            <a class="link-primary" [routerLink]="['/mecanic/travail',travail._id]">Voir diagnostic</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <app-pagination
+                [page]=1
+                [pageMax]=2
+                [url]="'/mecanic/travaux'"
+            ></app-pagination>
+        </div>
+    </div>
+</div>

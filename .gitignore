@@ -3,3 +3,4 @@ node_modules
 proto_frontend
 package-lock.json
 backend/package-lock.json
+templated_frontend

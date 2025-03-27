@@ -1,0 +1,55 @@
+<div class="card d-flex justify-content-center">
+    <div class="card-body col-x1-12">
+        <h5 class="mb-4">Les Rendez-Vous</h5>
+        <a class="link link-primary d-flex justify-content-end" [routerLink]="['/manager/demandes-rendez-vous', 1]">Demandes de rendez-vous</a>
+        <div class="card tbl-card">
+            <div class="table-responsive">
+            <table class="table table-hover mb-0" style="font-size: larger;">
+                <thead >
+                <tr>
+                    <th>DATE DE RENDEZ-VOUS</th>
+                    <th class="text-center">CLIENT</th>
+                    <th class="text-center">TEL. CLIENT</th>
+                    <th class="text-center">ETAT</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>[date de rendez-vous ici]</td>
+                        <td class="text-center">Nom et prenom de client</td>
+                        <td class="text-center">0349129501</td>
+                        <td class="text-center">Terminé</td>
+                        <td class="text-end">
+                            <form><button type="submit" class="btn btn-danger">Supprimer</button></form>
+                        </td>
+                        <td class="text-end">
+                            <form><button type="submit" class="btn btn-primary">Créer Travail</button></form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>[date de rendez-vous ici]</td>
+                        <td class="text-center">Nom et prenom de client</td>
+                        <td class="text-center">0349129501</td>
+                        <td class="text-center">Actif</td>
+                        <td class="text-end">
+                            <form><button type="submit" class="btn btn-danger">Annuler</button></form>
+                        </td>
+                        <td class="text-end">
+                            <form><button type="submit" class="btn btn-primary">Terminer</button></form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <app-pagination
+                [page]=1
+                [pageMax]=2
+                [url]="'/manager/rendez-vous'"
+            ></app-pagination>
+        </div>
+    </div>
+</div>

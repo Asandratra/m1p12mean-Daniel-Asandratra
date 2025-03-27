@@ -1,0 +1,35 @@
+<div class="card d-flex justify-content-center">
+    <div class="card-body col-x1-12">
+        <h5 class="mb-4">Diagnostic sur le vehicule [MATRICULE]</h5>
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Garage [Localisation]</li>
+                <li class="list-group-item">Estimation de durée : du [Date de début] jusq'au [Estimation de fin]</li>
+                <li class="list-group-item">Prix total : [prix total du travail]</li>
+                <li class="list-group-item">Reste à payer : [montant restant à paye]</li>
+            </ul>
+        </div>
+        <div class="card tbl-card">
+            <div class="table-responsive">
+            <table class="table table-hover mb-0" style="font-size: larger;">
+                <thead >
+                <tr>
+                    <th>SERVICE</th>
+                    <th class="text-center">DUREE</th>
+                    <th class="text-center">PRIX</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for (diagnostic of diagnostics; track diagnostics) {
+                    <tr>
+                        <td>{{ diagnostic.idService.label }}</td>
+                        <td class="text-center">{{ diagnostic.idService.duree }} mn</td>
+                        <td class="text-center">Ar {{ diagnostic.idService.prix.montant | number }}</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>

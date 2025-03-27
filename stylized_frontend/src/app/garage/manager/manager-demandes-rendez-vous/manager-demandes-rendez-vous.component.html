@@ -1,0 +1,38 @@
+<div class="card d-flex justify-content-center">
+    <div class="card-body col-x1-12">
+        <h5 class="mb-4">Mes Demandes de Rendez-Vous</h5>
+        <div class="card tbl-card">
+            <div class="table-responsive">
+            <table class="table table-hover mb-0" style="font-size: larger;">
+                <thead >
+                <tr>
+                    <th>DATE DEMANDEE</th>
+                    <th class="text-center">CLIENT</th>
+                    <th class="text-center">TEL. CLIENT</th>
+                    <th class="text-center">ETAT</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>[date de rendez-vous ici]</td>
+                        <td class="text-center">Nom et prenom de client</td>
+                        <td class="text-center">0349129501</td>
+                        <td class="text-center">En attente</td>
+                        <td>
+                            <a class="btn btn-primary" [routerLink]="['/manager/valider-demande',1]">Voir</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <app-pagination
+                [page]=1
+                [pageMax]=2
+                [url]="'/manager/demandes-rendez-vous'"
+            ></app-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="card d-flex justify-content-center">
+    <div class="card-body col-x1-12">
+        <h4 class="mb-4">Le garage peut acceuillir [place] véhicule en même temps</h4>
+        <div class="row">
+            <div class="col-sm-7">
+                <h5 class="mb-4">Demande de rendez-vous</h5>
+                <div class="card">
+                    <ul class="list-group list-group-flush" style="font-size: larger;">
+                        <li class="list-group-item">Date demandée : [date ici]</li>
+                        <li class="list-group-item">Client : [ Nom du client ]</li>
+                        <li class="list-group-item">Tel. Client : [Tel du client]</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">Valider demande</h5>
+                    <form>
+                        <div class="form-group">
+                            <input type="checkbox" (change)="switchChangeDate()">
+                            <label> Proposer une autre date</label>
+                            <input type="datetime-local" class="form-control" id="date-heure" [disabled]="!changerDate">
+                        </div>
+                        <div class="row text-end">
+                            <div class="col">
+                                <button type="button" onclick="" class="btn btn-danger">Refuser</button>
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="card d-flex justify-content-center">
+        <div class="card-body col-x1-12">
+            <h5 class="mb-4">Les prochains rendez-vous<h5>
+            <div class="card tbl-card">
+                <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead >
+                    <tr>
+                        <th>DATE DE RENDEZ-VOUS</th>
+                        <th class="text-center">CLIENT</th>
+                        <th class="text-center">TEL. CLIENT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[date de rendez-vous ici]</td>
+                            <td class="text-center">Nom et prenom de client</td>
+                            <td class="text-center">0349129501</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>

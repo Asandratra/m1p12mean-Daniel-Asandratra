@@ -1,0 +1,109 @@
+<div class="card d-flex justify-content-center">
+    <div class="card-body col-x1-12">
+        <h5 class="mb-4">Profil Mécanicien</h5>
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="card">
+                    <ul class="list-group list-group-flush" style="font-size: larger;">
+                        <li class="list-group-item">Nom : [ Nom et prenom ]</li>
+                        <li class="list-group-item">Tel. : [ Tel ]</li>
+                        <li class="list-group-item">Rôle : [ Role ]</li>
+                        <li class="list-group-item">Salaire : [ Salaire ]</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">Enregistrer congé</h5>
+                    <form>
+                        <div>
+                            <input type="checkbox" (change)="switchCongeIntervalle()">
+                            <label> Plusieurs jours</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Date de congé</label>
+                            <input type="date" class="form-control" id="date">
+                        </div>
+                        <div class="form-group" [hidden]="!congeIntervalle">
+                            <label>Jusqu'au</label>
+                            <input type="date" class="form-control" id="date">
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary text-end">Enregistrer</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body col-x1-12">
+        <div class="row">
+            <div class="col-sm-6">
+                <h5 class="mb-4">Services à effectuer</h5>
+                <div>
+                    <form action="">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <ng-multiselect-dropdown
+                                        [placeholder]="'Services'"
+                                        [settings]="dropdownSettings"
+                                        [data]="servicesDropdownList"
+                                        [(ngModel)]="selectedService"
+                                        >
+                                    </ng-multiselect-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="btn btn-primary" type="submit">Ajouter Specialite</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card tbl-card">
+                    <div class="table-responsive">
+                    <table class="table table-hover mb-0" style="font-size: larger;">
+                        <thead >
+                        <tr>
+                            <th>SERVICE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for (speciality of specialities; track speciality) {
+                            <tr>
+                                <td>{{ speciality.idService.label }}</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <h5 class="mb-4">Congés</h5>
+                </div>
+                <div class="card tbl-card">
+                    <div class="table-responsive">
+                    <table class="table table-hover mb-0" style="font-size: larger;">
+                        <thead >
+                        <tr>
+                            <th>DU</th>
+                            <th>AU</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>[date de debut]</td>
+                                <td>[date de fin]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
