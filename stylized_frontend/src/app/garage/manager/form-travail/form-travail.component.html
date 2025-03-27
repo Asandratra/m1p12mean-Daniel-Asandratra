@@ -1,0 +1,54 @@
+<div class="card d-flex justify-content-center">
+    <div class="card-body col-x1-12">
+        <h5 class="mb-4">Nouveau Travail</h5>
+        <div class="tbl-card">
+            <form>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="matricule">Matricule du vehicule</label>
+                            <input type="text" class="form-control" id="matricule" placeholder="1234 TA">
+                        </div>
+                        <div class="form-group">
+                            <label for="nomClient">Nom Client</label>
+                            <input type="text" class="form-control" id="nomClient" placeholder="Rakotoson Bema">
+                        </div>
+                        <div class="form-group">
+                            <label for="telClient">Tel. Client</label>
+                            <input type="text" class="form-control" id="telClient" placeholder="exemple: 0332459102">
+                        </div>
+                        <div class="form-group">
+                            <label for="debut">Date de début</label>
+                            <input type="datetime-local" class="form-control" id="debut">
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="form-group">
+                        <label for="exampleFormControlSelect2">Services à effectuer</label>
+                            <ng-multiselect-dropdown
+                                [placeholder]="'Services'"
+                                [settings]="dropdownSettings"
+                                [data]="servicesDropdownList"
+                                [(ngModel)]="selectedService"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleFormControlSelect2">Mecaniciens à affilier</label>
+                            <ng-multiselect-dropdown
+                                [placeholder]="'Mecaniciens'"
+                                [settings]="dropdownSettings"
+                                [data]="mecanicienDropdownList"
+                                [(ngModel)]="selectedMecanicien"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <button class="btn btn-primary" type="submit">Valider</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

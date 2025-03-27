@@ -1,0 +1,35 @@
+<div class="card d-flex justify-content-center">
+    <div class="card-body col-x1-12">
+        <h5 class="mb-4">Mes Rendez-Vous</h5>
+        <a class="link link-primary d-flex justify-content-end" [routerLink]="['/client/demandes-rendez-vous', 1]">Voir mes demandes de rendez-vous</a>
+        <div class="card tbl-card">
+            <div class="table-responsive">
+            <table class="table table-hover mb-0" style="font-size: larger;">
+                <thead >
+                <tr>
+                    <th>DATE RENDEZ-VOUS</th>
+                    <th class="text-center">GARAGE</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>[date de rendez-vous ici]</td>
+                        <td class="text-center">Garage Analakely</td>
+                        <td class="text-end">
+                            <form><button type="submit" class="btn btn-danger">Annuler</button></form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <app-pagination
+                [page]=1
+                [pageMax]=2
+                [url]="'/client/rendez-vous'"
+            ></app-pagination>
+        </div>
+    </div>
+</div>
