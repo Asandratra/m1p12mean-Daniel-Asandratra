@@ -35,7 +35,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo : '/client/garages/1',
+        redirectTo : '/client/login',
         pathMatch : 'full'
       },
       {
@@ -70,7 +70,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo : '/mecanic/travaux/1',
+        redirectTo : '/employee/login',
         pathMatch : 'full'
       },
       {
@@ -89,7 +89,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo : '/manager/travaux/1',
+        redirectTo : '/employee/login',
         pathMatch : 'full'
       },
       {
