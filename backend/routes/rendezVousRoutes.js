@@ -23,6 +23,27 @@ router.get('/', async (req, res) => {
     }
 });
 
+//Get 10 next rendez-vous of a garage
+router.get('/next-rendez-vous/:idGarage', async (req, res) => {
+    try{
+        const filter = {
+            idGarage : req.params.idGarage,
+            dateHeure : {
+                $gte : new Date()
+            },
+            status : 0
+        }
+        const rendezVous = await RendezVous.find(filter)
+            .limit(10)
+            .sort({dateHeure:1})
+            .populate('idClient')
+            .populate('idGarage');
+        res.json(rendezVous);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 //Update a RendezVous by id
 router.put('/:id', async (req, res) => {
     try{

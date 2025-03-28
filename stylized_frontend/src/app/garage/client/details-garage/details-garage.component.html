@@ -1,6 +1,6 @@
 <div class="card d-flex justify-content-center">
     <div class="card-body col-x1-12">
-        <h5 class="mb-4">Garage [Localisation]</h5>
+        <h5 class="mb-4">Garage {{ garage.localisation }}</h5>
         <div>
             <div class="row">
                 <div class="col-sm-7">
@@ -8,8 +8,8 @@
                     <div class="card-body">
                       <h5 class="card-title">Manager</h5>
                       <ul class="list-group list-group-flush" style="font-size: larger;">
-                          <li class="list-group-item">Nom : [ Nom et prenom du Manager ]</li>
-                          <li class="list-group-item">Tel. : [Tel du Manager]</li>
+                          <li class="list-group-item">Nom : {{ manager.nom }} {{ manager.prenom }}</li>
+                          <li class="list-group-item">Tel. : {{ manager.tel }}</li>
                       </ul>
                     </div>
                   </div>
@@ -18,13 +18,20 @@
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Envoyer une demande de rendez-vous</h5>
-                      <form>
+                      <form (ngSubmit)="createDemandeRDV()" #demandeRDVForm="ngForm">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Date de rendez-vous</label>
-                          <input type="datetime-local" class="form-control" id="date-heure">
+                          <label for="date-heure">Date demandée</label>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            id="date-heure"
+                            name="date-heure"
+                            [(ngModel)]="dateHeure"
+                            required
+                          />
                           <small id="emailHelp" class="form-text text-muted">Cette date peut encore être modifiée par le Manager.</small>
                         </div>
-                        <button type="submit" class="btn btn-primary text-end">Envoyer</button>
+                        <button type="submit" class="btn btn-primary text-end" [disabled]="demandeRDVForm.invalid">Envoyer</button>
                       </form>
                     </div>
                   </div>

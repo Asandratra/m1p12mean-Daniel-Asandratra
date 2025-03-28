@@ -33,7 +33,7 @@ export class GaragesComponent implements OnInit {
   ngOnInit(): void {
     const usercheck = JSON.parse(sessionStorage.getItem('currentUser')!);
     if(usercheck) this.currentUser = usercheck;
-    else this.router.navigateByUrl('/client');
+    else this.router.navigateByUrl('client');
     this.activatedRoute.params.subscribe(params => {
       this.page = params['page'];
       this.loadGarages();

@@ -31,7 +31,7 @@ router.post('/search/:page', async (req, res) => {
             status : 200,
             nombreElement : demandesRDV.length,
             page : parseInt(req.params.page),
-            pageMax : parseInt((count/limit)+(count%limit)),
+            pageMax : parseInt((count/limit)+1),
             demandesRDV : demandesRDV.map(demandeRDV => ({
                 idClient : demandeRDV.idClient,
                 idGarage : demandeRDV.idGarage,
