@@ -12,6 +12,9 @@ export class GarageService {
 
   constructor(private httpClient : HttpClient) { }
 
+  getAllGarages() : Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}`);
+  }
   getListGarages(page:number, parameters:any) : Observable<any> {
     return this.httpClient.post(`${this.apiUrl}/search/${page}`, parameters);
   }

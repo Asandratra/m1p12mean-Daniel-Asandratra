@@ -64,18 +64,21 @@ export class ClientDemandesRendezVousComponent implements OnInit{
 
   updateStatusDemandeRDV(idDemandeRendezVous: string, newStatus : number) : void {
     const changeStatus = { status : newStatus };
-    this.demandeRDVService.updateDemandeRDV(idDemandeRendezVous, changeStatus).subscribe();
+    this.demandeRDVService.updateDemandeRDV(idDemandeRendezVous, changeStatus).subscribe(data => {
+      this.activatedRoute.params.subscribe(params => {
+        this.page = params['page'];
+        this.loadDemandesRDV(this.page);
+      });
+    });
   }
 
   confirmRDV(idDemandeRendezVous: string) : void {
     this.createRendezVous(idDemandeRendezVous);
     this.updateStatusDemandeRDV(idDemandeRendezVous,2);
-    this.loadDemandesRDV(this.page);
   }
 
   refusRDV(idDemandeRendezVous : string) : void {
     this.updateStatusDemandeRDV(idDemandeRendezVous,3);
-    this.loadDemandesRDV(this.page);
   }
 
 }

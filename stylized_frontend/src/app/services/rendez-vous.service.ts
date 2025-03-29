@@ -17,6 +17,14 @@ export class RendezVousService {
   }
 
   get10NextOfAGarage(idGarage:string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/next-rendez-vous/${idGarage}`);
+    return this.http.post(`${this.apiUrl}/next-rendez-vous/${idGarage}`,{});
+  }
+
+  updateRendezVous(id: string, rendezVous: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, rendezVous);
+  }
+
+  filterRendezVous(page: number, rendezvous: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/search/${page}`, rendezvous);
   }
 }

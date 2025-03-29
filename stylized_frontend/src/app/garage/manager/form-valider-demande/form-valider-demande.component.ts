@@ -35,8 +35,6 @@ export class FormValiderDemandeComponent implements OnInit {
     else this.router.navigateByUrl('manager');
     this.activatedRoute.params.subscribe(params => {
       this.loadDemandeRDVById(params['id']);
-      this.loadNextRendezVous(this.garage._id);
-      this.dateHeure=this.demandeRDV.dateHeure;
     });
   }
 
@@ -49,6 +47,7 @@ export class FormValiderDemandeComponent implements OnInit {
       this.demandeRDV = data;
       this.garage = data.idGarage;
       this.client = data.idClient;
+      this.loadNextRendezVous(data.idGarage._id);
     })
   }
 

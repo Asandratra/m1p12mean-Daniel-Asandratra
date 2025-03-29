@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 //Search for garages with pagination
 router.post('/search/:page', async (req, res) => {
     try {
-        const count = await Garage.countDocuments();
+        const count = await Garage.countDocuments(req.body);
         const garages = await Garage.find(req.body)
             .skip((req.params.page - 1)*limit)
             .limit(limit);

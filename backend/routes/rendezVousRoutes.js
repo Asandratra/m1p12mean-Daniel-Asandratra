@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const RendezVous = require('../model/RendezVous');
 
+const limit = 10;
+
 //Create a RendezVous
 router.post('/', async (req, res) => {
     try{
@@ -13,18 +15,8 @@ router.post('/', async (req, res) => {
     }
 });
 
-//Read all RendezVous-es
-router.get('/', async (req, res) => {
-    try{
-        const rendezVous = await RendezVous.find();
-        res.json(rendezVous);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-
 //Get 10 next rendez-vous of a garage
-router.get('/next-rendez-vous/:idGarage', async (req, res) => {
+router.post('/next-rendez-vous/:idGarage', async (req, res) => {
     try{
         const filter = {
             idGarage : req.params.idGarage,
@@ -38,6 +30,51 @@ router.get('/next-rendez-vous/:idGarage', async (req, res) => {
             .sort({dateHeure:1})
             .populate('idClient')
             .populate('idGarage');
+        res.json(rendezVous);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+//Search for rendez-vous with pagination
+router.post('/search/:page', async (req, res) => {
+    try {
+        const count = await RendezVous.countDocuments(req.body);
+        const rendezVous = await RendezVous.find(req.body)
+            .populate('idClient')
+            .populate('idGarage')
+            .sort([['dateHeure',1],['demandesRDV.status',-1]])
+            .skip((req.params.page - 1)*limit)
+            .limit(limit);
+        
+        const response = {
+            status : 200,
+            nombreElement : rendezVous.length,
+            page : parseInt(req.params.page),
+            pageMax : parseInt((count/limit)+1),
+            rendezVous : rendezVous.map(rendezVous => ({
+                idClient : rendezVous.idClient,
+                idGarage : rendezVous.idGarage,
+                dateHeure : rendezVous.dateHeure,
+                status : rendezVous.status,
+                _id : rendezVous._id,
+                createdAt : rendezVous.createdAt,
+                updatedAt : rendezVous.updatedAt,
+                __v: rendezVous.__v
+            }))
+        };
+
+        res.json(response);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
+//Read all RendezVous-es
+router.get('/', async (req, res) => {
+    try{
+        const rendezVous = await RendezVous.find();
         res.json(rendezVous);
     } catch (error) {
         res.status(500).json({ message: error.message });
