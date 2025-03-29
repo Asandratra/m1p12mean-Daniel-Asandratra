@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 //Search for garages with pagination
 router.post('/search/:page', async (req, res) => {
     try {
-        const count = await Garage.countDocuments();
+        const count = await Garage.countDocuments(req.body);
         const garages = await Garage.find(req.body)
             .skip((req.params.page - 1)*limit)
             .limit(limit);
@@ -29,7 +29,7 @@ router.post('/search/:page', async (req, res) => {
             nombreElement : garages.length,
             nombreMaxElement : count,
             page : parseInt(req.params.page),
-            pageMax : parseInt((count/limit)+(count%limit)),
+            pageMax : parseInt((count/limit)+1),
             garages : garages.map(garage => ({
                 localisation : garage.localisation,
                 place : garage.place,
@@ -88,7 +88,10 @@ router.get('/asManager/:id', async (req, res) => {
         const garage = await Garage.findById(req.params.id)
             .populate({
                 path : 'demandesRDV',
-                match : { status : { $lt : 2 } }
+                match : { status : { $lt : 2 } },
+                populate : {
+                    path : 'idClient'
+                }
             })
             .sort([['dateHeure',1],['demandesRDV.status',-1]])
             .lean();

@@ -4,6 +4,6 @@
         @for(item of [].constructor(pageMax); track item; let i = $index){
             <li class="page-item"><a class="page-link" [routerLink]="[url,i+1]">{{i+1}}</a></li>
         }
-        <li class="page-item"><a class="page-link" [routerLink]="[url,page+1]" [ariaDisabled]="page==pageMax">></a></li>
+        <li class="page-item"><a class="page-link" [routerLink]="[url,page-(-1)]" [ariaDisabled]="page==pageMax">></a></li>
     </ul>
 </nav>

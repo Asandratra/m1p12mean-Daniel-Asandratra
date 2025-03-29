@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 //Search for demandes with pagination
 router.post('/search/:page', async (req, res) => {
     try {
-        const count = await DemandeRDV.countDocuments();
+        const count = await DemandeRDV.countDocuments(req.body);
         const demandesRDV = await DemandeRDV.find(req.body)
             .populate('idClient')
             .populate('idGarage')
@@ -31,7 +31,7 @@ router.post('/search/:page', async (req, res) => {
             status : 200,
             nombreElement : demandesRDV.length,
             page : parseInt(req.params.page),
-            pageMax : parseInt((count/limit)+(count%limit)),
+            pageMax : parseInt((count/limit)+1),
             demandesRDV : demandesRDV.map(demandeRDV => ({
                 idClient : demandeRDV.idClient,
                 idGarage : demandeRDV.idGarage,

@@ -11,6 +11,12 @@ import { NgMultiSelectDropDownModule,IDropdownSettings } from 'ng-multiselect-dr
   styleUrl: './form-travail.component.scss'
 })
 export class FormTravailComponent implements OnInit{
+  nomClient : string = '';
+  telClient : string = '';
+  idClient : any; 
+
+  isClientConnu : boolean = false;
+
   servicesDropdownList = [];
   mecanicienDropdownList = [];
 
@@ -20,6 +26,22 @@ export class FormTravailComponent implements OnInit{
   dropdownSettings : IDropdownSettings = {};
 
   ngOnInit() {
+    this.nomClient = '';
+    this.telClient = '';
+    this.idClient = ''; 
+  
+    this.isClientConnu = false;
+
+    const checkClient = JSON.parse(sessionStorage.getItem("clientDeTravail"));
+    if(checkClient){
+      this.nomClient = `${checkClient.nom} ${checkClient.prenom}`;
+      this.telClient = checkClient.tel;
+      this.idClient = checkClient._id;
+
+      this.isClientConnu = true;
+      sessionStorage.removeItem("clientDuTravail");
+    }
+    
     this.servicesDropdownList = [
       { item_id: 1, item_text: 'Service 1' },
       { item_id: 2, item_text: 'Service 2' },

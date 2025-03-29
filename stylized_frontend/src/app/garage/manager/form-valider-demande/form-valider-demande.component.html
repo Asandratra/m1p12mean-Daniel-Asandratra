@@ -1,14 +1,14 @@
 <div class="card d-flex justify-content-center">
     <div class="card-body col-x1-12">
-        <h4 class="mb-4">Le garage peut acceuillir [place] véhicule en même temps</h4>
+        <h4 class="mb-4">Le garage peut acceuillir {{ demandeRDV.idGarage.place }} véhicule(s) en même temps</h4>
         <div class="row">
             <div class="col-sm-7">
                 <h5 class="mb-4">Demande de rendez-vous</h5>
                 <div class="card">
                     <ul class="list-group list-group-flush" style="font-size: larger;">
-                        <li class="list-group-item">Date demandée : [date ici]</li>
-                        <li class="list-group-item">Client : [ Nom du client ]</li>
-                        <li class="list-group-item">Tel. Client : [Tel du client]</li>
+                        <li class="list-group-item">Date demandée : {{ demandeRDV.dateHeure | date : 'dd/MM/yyyy à HH:mm' }}</li>
+                        <li class="list-group-item">Client : {{ client.nom }} {{ client.prenom }}</li>
+                        <li class="list-group-item">Tel. Client : {{ client.tel }}</li>
                     </ul>
                 </div>
             </div>
@@ -16,16 +16,19 @@
                 <div class="card">
                     <div class="card-body">
                     <h5 class="card-title">Valider demande</h5>
-                    <form>
+                    <form (ngSubmit)="updateDemandeRDV()">
                         <div class="form-group">
                             <input type="checkbox" (change)="switchChangeDate()">
                             <label> Proposer une autre date</label>
-                            <input type="datetime-local" class="form-control" id="date-heure" [disabled]="!changerDate">
+                            <input
+                                type="datetime-local"
+                                class="form-control"
+                                id="date-heure"
+                                name="date-heure"
+                                [(ngModel)]="dateHeure"
+                                [disabled]="!changerDate">
                         </div>
                         <div class="row text-end">
-                            <div class="col">
-                                <button type="button" onclick="" class="btn btn-danger">Refuser</button>
-                            </div>
                             <div class="col">
                                 <button type="submit" class="btn btn-primary">Valider</button>
                             </div>
@@ -51,11 +54,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>[date de rendez-vous ici]</td>
-                            <td class="text-center">Nom et prenom de client</td>
-                            <td class="text-center">0349129501</td>
-                        </tr>
+                        @for (rendezVous of nextRendezVous; track rendezVous) {
+                            <tr>
+                                <td>{{ rendezVous.dateHeure | date : 'dd/MM/yyyy à HH:mm' }}</td>
+                                <td class="text-center">{{ rendezVous.idClient.nom }} {{ rendezVous.idClient.prenom }}</td>
+                                <td class="text-center">{{ rendezVous.idClient.tel }}</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
                 </div>

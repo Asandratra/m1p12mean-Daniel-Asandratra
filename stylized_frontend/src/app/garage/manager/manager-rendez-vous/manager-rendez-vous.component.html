@@ -16,30 +16,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>[date de rendez-vous ici]</td>
-                        <td class="text-center">Nom et prenom de client</td>
-                        <td class="text-center">0349129501</td>
-                        <td class="text-center">Terminé</td>
-                        <td class="text-end">
-                            <form><button type="submit" class="btn btn-danger">Supprimer</button></form>
-                        </td>
-                        <td class="text-end">
-                            <form><button type="submit" class="btn btn-primary">Créer Travail</button></form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>[date de rendez-vous ici]</td>
-                        <td class="text-center">Nom et prenom de client</td>
-                        <td class="text-center">0349129501</td>
-                        <td class="text-center">Actif</td>
-                        <td class="text-end">
-                            <form><button type="submit" class="btn btn-danger">Annuler</button></form>
-                        </td>
-                        <td class="text-end">
-                            <form><button type="submit" class="btn btn-primary">Terminer</button></form>
-                        </td>
-                    </tr>
+                    @for (rdv of rendezVous; track rdv) {
+                        <tr>
+                            <td>{{ rdv.dateHeure | date : 'dd/MM/yyyy à HH:mm' }}</td>
+                            <td class="text-center">{{ rdv.idClient.nom}} {{ rdv.idClient.prenom }}</td>
+                            <td class="text-center">{{ rdv.idClient.tel }}</td>
+                            <td class="text-center">{{ status[rdv.status] }}</td>
+                            <td class="text-end">
+                                <form (ngSubmit)="annulerRendezVousById(rdv._id)">
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </td>
+                            @if (rdv.status==1) {
+                                <td class="text-end">
+                                    <form (ngSubmit)="creerTravailDepuisRendezVous(json.stringify(rdv.idClient))">
+                                        <button type="submit" class="btn btn-primary">Créer Travail</button>
+                                    </form>
+                                </td>
+                            }
+                            @else {
+                                <td class="text-end">
+                                    <form (ngSubmit)="terminerRendezVousById(rdv._id)">
+                                        <button type="submit" class="btn btn-primary">Terminer</button>
+                                    </form>
+                                </td>
+                            }
+                        </tr>
+                    }
                 </tbody>
             </table>
             </div>

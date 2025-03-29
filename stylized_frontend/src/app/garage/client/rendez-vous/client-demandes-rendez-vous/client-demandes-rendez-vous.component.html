@@ -14,25 +14,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>[date de rendez-vous ici]</td>
-                        <td class="text-center">Garage Analakely</td>
-                        <td class="text-center">En confirmation</td>
-                        <td class="text-end">
-                            <form><button type="submit" class="btn btn-danger">Annuler</button></form>
-                        </td>
-                        <td class="text-end">
-                            <form><button type="submit" class="btn btn-primary">Confirmer</button></form>
-                        </td>
-                    </tr>
+                    @for(demandeRDV of demandesRDV; track demandeRDV){
+                        <tr>
+                            <td>{{ demandeRDV.dateHeure | date : 'dd/MM/yyyy à HH:mm' }}</td>
+                            <td class="text-center">Garage {{ demandeRDV.idGarage.localisation }}</td>
+                            <td class="text-center">{{ status[demandeRDV.status] }}</td>
+                            <td class="text-end">
+                                <form (ngSubmit)="refusRDV(demandeRDV._id)">
+                                    <button type="submit" class="btn btn-danger">Annuler</button>
+                                </form>
+                            </td>
+                            @if(demandeRDV.status==1){
+                                <td class="text-end">
+                                    <form (ngSubmit)="confirmRDV(demandeRDV._id)">
+                                        <button type="submit" class="btn btn-primary">Confirmer</button>
+                                    </form>
+                                </td>
+                            }
+                        </tr>
+                    }
                 </tbody>
             </table>
             </div>
         </div>
         <div class="d-flex justify-content-end">
             <app-pagination
-                [page]=1
-                [pageMax]=2
+                [page]="page"
+                [pageMax]="pageMax"
                 [url]="'/client/demandes-rendez-vous'"
             ></app-pagination>
         </div>

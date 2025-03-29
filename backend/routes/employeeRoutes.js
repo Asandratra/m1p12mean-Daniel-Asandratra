@@ -22,7 +22,8 @@ router.post('/signup', async (req, res) => {
             username : `${username}`,
             estActif : true
         })
-            .populate('idRole');
+            .populate('idRole')
+            .populate('idGarage');
         if(!employee) throw new Error("Pseudo ou mot de passe incorrecte.");
         if(employee){
             employee.checkMotDePasse(motdepasse, function(err, isMatch) {
