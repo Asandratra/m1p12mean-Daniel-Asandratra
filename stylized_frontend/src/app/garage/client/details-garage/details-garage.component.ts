@@ -14,6 +14,7 @@ import { DemandeRDVService } from 'src/app/services/demande-rdv.service';
 })
 export class ClientDetailsGarageComponent implements OnInit{
   constructor(private garageService:GarageService, private demandeRDVService:DemandeRDVService, private activatedRoute:ActivatedRoute){}
+  errorMessage = '';
 
   currentUser : any;
   garage : any;
@@ -37,10 +38,12 @@ export class ClientDetailsGarageComponent implements OnInit{
     this.garageService.getGarageByIdAsClient(id).subscribe(data => {
       this.garage = data;
       this.manager = data.employees[0];
+    }, error => {
     });
   }
 
   createDemandeRDV() : void {
+    this.errorMessage='';
     if(this.dateHeure){
       const demandeRDV = {
         idClient : this.currentUser._id,
@@ -51,6 +54,8 @@ export class ClientDetailsGarageComponent implements OnInit{
       this.demandeRDVService.addDemandeRDV(demandeRDV).subscribe(data => {
         alert("Demande de rendez-vous envoyée.");
         this.router.navigateByUrl('garage/list/1')
+      }, error=> {
+        this.errorMessage=error.message;
       });
     }
     else{

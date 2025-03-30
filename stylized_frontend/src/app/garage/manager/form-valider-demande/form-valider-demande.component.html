@@ -16,6 +16,9 @@
                 <div class="card">
                     <div class="card-body">
                     <h5 class="card-title">Valider demande</h5>
+                    @if (errorMessage) {
+                        <p class="text text-danger">{{ errorMessage}}</p>
+                    }
                     <form (ngSubmit)="updateDemandeRDV()">
                         <div class="form-group">
                             <input type="checkbox" (change)="switchChangeDate()">

@@ -14,12 +14,12 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
   styleUrl: './mecanic-login.component.scss'
 })
 export class MecanicLoginComponent implements OnInit {
+  errorMessage='';
+
   signupInfo = {
     username : 'managerAntanimena',
     motdepasse : 'garagiste1'
   };
-
-  authentificationError = ''
 
   router = inject(Router);
 
@@ -30,7 +30,7 @@ export class MecanicLoginComponent implements OnInit {
   }
 
   signup(): void {
-    this.authentificationError='';
+    this.errorMessage='';
     if(this.signupInfo.username && this.signupInfo.motdepasse) {
       this.employeeService.signupEmployee(this.signupInfo).subscribe((data) => {
         sessionStorage.setItem("currentUser", JSON.stringify(data));
@@ -39,8 +39,7 @@ export class MecanicLoginComponent implements OnInit {
           this.router.navigateByUrl(`manager/travaux/1`);
         }
       }, error=>{
-        this.authentificationError=error.getMessage();
-        alert(this.authentificationError);
+        this.errorMessage=error.message;
       });
     }
     this.signupInfo.username='';

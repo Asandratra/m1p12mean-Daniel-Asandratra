@@ -21,6 +21,9 @@
                 <div class="card">
                     <div class="card-body">
                     <h5 class="card-title">Enregistrer congé</h5>
+                    @if (errorMessage) {
+                        <p class="text text-danger">{{errorMessage}}</p>
+                    }
                     <form (ngSubmit)="enregistrerConge()" #createCongeForn="ngForm">
                         <div>
                             <input type="checkbox" (change)="switchCongeIntervalle()">

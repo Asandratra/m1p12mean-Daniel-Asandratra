@@ -1,0 +1,39 @@
+Client
+    Log in (Template OK, Backend No)
+    Inscription (Template OK, Backend No)
+        Liste des Garages (avec pagination) (Template OK, Backend No)
+            détails sur le garage avec Formulaire de demande de rendez-vous (Template OK, Backend No)
+        Liste des demandes de rendez-vous (avec pagination et leurs états) (Template OK, Backend No)
+            Détails de la demande de rendez-vous avec validation/annulation de la demande de rendez-vous
+        Liste de rendez-vous de ce client (par ordre de date, de la date la plus proche à la plus éloignier) (Template OK, Backend No)
+        Liste de travail en cours, avec reste a payer et estimation de fin de taches (Template OK, Backend No)
+            details de diagnostic (Template OK, Backend No)
+Employee
+    Log in (Template OK, Backend No)
+    Inscription de nouvel employee (Template OK, Backend No)
+        |Administrateur
+            Liste des Garages
+                Formulaire d'ajout de garage
+            Liste des Services
+                Formulaire d'ajout de service
+            Listes des Roles
+                Formulaire d'ajout de Role
+            Liste des Employees
+                Détails employee
+                Modification employee
+                    Formulaire de changement de salaire
+        |Mécanicien
+            Listes des travaux affilier (Template OK, Backend No)
+                Details de travail, service a faire, collegues (Template OK, Backend No)
+        |Manager
+            Liste des rendez-vous (Template OK, Backend No)
+                Liste de demande de rendez-vous (Template OK, Backend No)
+                Formulaire de validation de demande (Template OK, Backend No)
+            Liste des employee (Template OK, Backend No)
+                Détails employee, liste de spécialité, congés
+            Liste des travaux (Template OK, Backend No)
+                Formulaire de création de travail (Template OK, Backend No)
+                Détails de travail (Template OK, Backend No)
+                    Liste de diagnostic avec formulaire d'ajout de diagnostic (Template OK, Backend No)
+                    Liste d'affiliation, avec formulaire d'affiliation (Template OK, Backend No)
+                    Formulaire de paiement (Template OK, Backend No)

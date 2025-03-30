@@ -61,8 +61,7 @@ export class MecanicRegisterComponent implements OnInit {
         alert('Inscription validée!');
         this.router.navigateByUrl('employee/login');
       }, error=>{
-        this.errorMessage=error.getMessage();
-        alert(this.errorMessage);
+        this.errorMessage=error.message;
       });
     }
     this.signinInfo.username='';

@@ -16,6 +16,7 @@ import { PaginationComponent } from 'src/app/components/pagination/pagination.co
   styleUrl: './client-demandes-rendez-vous.component.scss'
 })
 export class ClientDemandesRendezVousComponent implements OnInit{
+  errorMessage='';
 
   currentUser : any;
   demandesRDV : any[] = [];
@@ -51,6 +52,7 @@ export class ClientDemandesRendezVousComponent implements OnInit{
   }
 
   createRendezVous(idDemandeRendezVous : string) : void {
+    this.errorMessage=''
     this.demandeRDVService.getDemandesRDVByid(idDemandeRendezVous).subscribe(data => {
       const newRDV = {
         idClient : data.idClient,
@@ -58,7 +60,11 @@ export class ClientDemandesRendezVousComponent implements OnInit{
         dateHeure : data.dateHeure,
         status : 0
       };
-      this.rendezvousService.addDemandeRDV(newRDV).subscribe();
+      this.rendezvousService.addDemandeRDV(newRDV).subscribe(data=>{},error=>{
+        this.errorMessage=error.message;
+      });
+    }, error=>{
+      this.errorMessage=error.message;
     });
   }
 
@@ -68,7 +74,11 @@ export class ClientDemandesRendezVousComponent implements OnInit{
       this.activatedRoute.params.subscribe(params => {
         this.page = params['page'];
         this.loadDemandesRDV(this.page);
+      }, error=>{
+        this.errorMessage=error.message;
       });
+    },error=>{
+      this.errorMessage=error.message;
     });
   }
 

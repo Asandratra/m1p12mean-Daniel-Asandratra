@@ -1,6 +1,9 @@
 <div class="card d-flex justify-content-center">
     <div class="card-body col-x1-12">
         <h5 class="mb-4">Nouveau Travail</h5>
+        @if (errorMessage) {
+            <p class="text text-danger">{{errorMessage}}</p>
+        }
         <div class="tbl-card">
             <form>
                 <div class="row">
@@ -28,6 +31,7 @@
                                 type="text"
                                 class="form-control"
                                 id="telClient"
+                                name="telClient"
                                 placeholder="exemple: 0332459102"
                                 [(ngModel)]="telClient"
                                 [value]="telClient"
@@ -36,7 +40,12 @@
                         </div>
                         <div class="form-group">
                             <label for="debut">Date de début</label>
-                            <input type="datetime-local" class="form-control" id="debut">
+                            <input
+                                type="datetime-local"
+                                class="form-control"
+                                id="debut"
+                                name="debut"
+                            />
                         </div>
                     </div>
                     <div class="col-sm-7">
@@ -47,6 +56,8 @@
                                 [settings]="dropdownSettings"
                                 [data]="servicesDropdownList"
                                 [(ngModel)]="selectedService"
+                                id="services"
+                                name="services"
                                 >
                             </ng-multiselect-dropdown>
                         </div>
@@ -57,6 +68,8 @@
                                 [settings]="dropdownSettings"
                                 [data]="mecanicienDropdownList"
                                 [(ngModel)]="selectedMecanicien"
+                                id="employees"
+                                name="employees"
                                 >
                             </ng-multiselect-dropdown>
                         </div>

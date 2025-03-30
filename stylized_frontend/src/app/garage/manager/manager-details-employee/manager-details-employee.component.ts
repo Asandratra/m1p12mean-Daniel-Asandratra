@@ -17,6 +17,7 @@ import { NgMultiSelectDropDownModule,IDropdownSettings } from 'ng-multiselect-dr
 })
 export class ManagerDetailsEmployeeComponent implements OnInit {
   constructor(private employeeService:EmployeeService,private congeService:CongeService,private activatedRoute:ActivatedRoute){}
+  errorMessage='';
   idEmployee : string;
 
   currentUser: any;
@@ -72,6 +73,7 @@ export class ManagerDetailsEmployeeComponent implements OnInit {
   }
   
   enregistrerConge() : void {
+    this.errorMessage='';
     var conge = {
       idEmployee : this.idEmployee,
       debut : Date,
@@ -81,17 +83,19 @@ export class ManagerDetailsEmployeeComponent implements OnInit {
       if(this.debutConge && this.finConge){
         const debut = new Date(this.debutConge);
         const fin = new Date(this.finConge);
-        if(fin<debut) alert('La date de fin de congé ne peut pas être avant la date de début');
+        if(fin<debut) this.errorMessage='La date de fin de congé ne peut pas être avant la date de début';
         else{
           conge.debut=this.debutConge;
           conge.fin=this.finConge;
           this.congeService.createConge(conge).subscribe(data=>{
             this.loadEmployee(this.idEmployee);
+          },error=>{
+            this.errorMessage=error.message;
           })
         }
       }
       else{
-        alert("Veillez bien spécifier les dates de congé");
+        this.errorMessage="Veillez bien spécifier les dates de congé";
       }
     }
     else{
@@ -100,10 +104,12 @@ export class ManagerDetailsEmployeeComponent implements OnInit {
         conge.fin=this.debutConge;
         this.congeService.createConge(conge).subscribe(data=>{
           this.loadEmployee(this.idEmployee);
+        },error=>{
+          this.errorMessage=error.message;
         })
       }
       else{
-        alert("Veillez bien spécifier le jour de congé");
+        this.errorMessage="Veillez bien spécifier le jour de congé";
       }
     }
   }

@@ -18,6 +18,9 @@
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Envoyer une demande de rendez-vous</h5>
+                      @if(errorMessage){
+                        <p class="text text-danger">{{ errorMessage }}</p>
+                      }
                       <form (ngSubmit)="createDemandeRDV()" #demandeRDVForm="ngForm">
                         <div class="form-group">
                           <label for="date-heure">Date demandée</label>

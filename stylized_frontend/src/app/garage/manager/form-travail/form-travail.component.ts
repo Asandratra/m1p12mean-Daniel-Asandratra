@@ -11,6 +11,7 @@ import { NgMultiSelectDropDownModule,IDropdownSettings } from 'ng-multiselect-dr
   styleUrl: './form-travail.component.scss'
 })
 export class FormTravailComponent implements OnInit{
+  errorMessage=''
   nomClient : string = '';
   telClient : string = '';
   idClient : any; 

@@ -16,6 +16,7 @@ import { RendezVousService } from 'src/app/services/rendez-vous.service';
 })
 export class FormValiderDemandeComponent implements OnInit {
   constructor(private demandeRDVService:DemandeRDVService, private rendezVousService:RendezVousService, private activatedRoute:ActivatedRoute) {}
+  errorMessage='';
 
   currentUser : any;
   demandeRDV : any;
@@ -58,6 +59,7 @@ export class FormValiderDemandeComponent implements OnInit {
   }
 
   updateDemandeRDV() : void {
+    this.errorMessage='';
     if(this.changerDate){ 
       if(this.dateHeure){
         const nouvelleDemandeRDV = {
@@ -65,12 +67,13 @@ export class FormValiderDemandeComponent implements OnInit {
           status : 1
         };
         this.demandeRDVService.updateDemandeRDV(this.demandeRDV._id,nouvelleDemandeRDV).subscribe(data => {
-          alert("Demande de confirmation de rendez-vous envoyée.");
           this.router.navigateByUrl('manager/demandes-rendez-vous/1');
+        }, error=>{
+          this.errorMessage=error.message;
         });
       }
       else{
-        alert("Veuillez bien spécifier la date à laquelle vous souhaitez proposer le rendez-vous.");
+        this.errorMessage="Veuillez bien spécifier la date à laquelle vous souhaitez proposer le rendez-vous.";
       }
     }
     else{
@@ -78,8 +81,9 @@ export class FormValiderDemandeComponent implements OnInit {
         status : 1
       };
       this.demandeRDVService.updateDemandeRDV(this.demandeRDV._id,nouvelleDemandeRDV).subscribe(data => {
-        alert("Demande de confirmation de rendez-vous envoyée.");
         this.router.navigateByUrl('manager/demandes-rendez-vous/1');
+      }, error=>{
+        this.errorMessage=error.message;
       });
     }
   }
