@@ -14,23 +14,30 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Nom et prenom du mecano</td>
-                        <td class="text-center">0349129501</td>
-                        <td class="text-center">[Role]</td>
-                        <td class="text-center">[Salaire]</td>
-                        <td>
-                            <a class="btn btn-primary" [routerLink]="['/manager/employee',1]">Voir</a>
-                        </td>
-                    </tr>
+                    @for (employee of employees; track employee) {
+                        <tr>
+                            <td>{{ employee.nom }} {{ employee.prenom }}</td>
+                            <td class="text-center">{{ employee.tel }}</td>
+                            <td class="text-center">{{ employee.idRole.label }}</td>
+                            @if (employee.salaire){
+                                <td class="text-center">Ar {{ employee.salaire.montant | number }}</td>
+                            }
+                            @else{
+                                <td class="text-center">Pas encore de salaire enregistré</td>
+                            }
+                            <td>
+                                <a class="btn btn-primary" [routerLink]="['/manager/employee',employee._id]">Voir</a>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
             </div>
         </div>
         <div class="d-flex justify-content-end">
             <app-pagination
-                [page]=1
-                [pageMax]=2
+                [page]="page"
+                [pageMax]="pageMax"
                 [url]="'/manager/employees'"
             ></app-pagination>
         </div>

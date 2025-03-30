@@ -11,7 +11,25 @@ const EmployeeSchema = new mongoose.Schema({
     idRole : {type : mongoose.Schema.ObjectId, require: true, ref : 'Role'},
     idGarage: {type: mongoose.Schema.ObjectId, require: true, ref : 'Garage'},
     estActif : {type: Boolean, default : true}
-}, { timestamps: true }, {collection: 'employee'});
+}, { timestamps: true }, {collection: 'employee'}, {toJSON : { virtuals : true }});
+
+EmployeeSchema.virtual('conges',{
+    ref:'Conge',
+    localField:'_id',
+    foreignField:'idEmployee'
+})
+
+EmployeeSchema.virtual('salaire',{
+    ref:'Salaire',
+    localField:'_id',
+    foreignField:'idEmployee'
+})
+
+EmployeeSchema.virtual('specialities',{
+    ref:'Specialite',
+    localField:'_id',
+    foreignField:'idEmployee'
+})
 
 //Cryptage de mot de passe lors de nouveau Employee
 EmployeeSchema.pre('save', function(next) {

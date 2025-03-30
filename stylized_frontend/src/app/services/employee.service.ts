@@ -19,5 +19,12 @@ export class EmployeeService {
   signinEmployee(employee: any): Observable<any> {
     return this.http.post(`${this.apiURL}/signin`, employee);
   }
-  
+
+  filterEmployees(page: number, employee: any): Observable<any> {
+    return this.http.post(`${this.apiURL}/search/${page}`, employee);
+  }
+
+  getDetailsEmployeeAsManager(id:string): Observable<any> {
+    return this.http.get(`${this.apiURL}/asManager/${id}`);
+  }
 }
