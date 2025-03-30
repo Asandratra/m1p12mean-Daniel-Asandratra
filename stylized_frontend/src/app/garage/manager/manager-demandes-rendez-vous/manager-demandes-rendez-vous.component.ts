@@ -34,12 +34,15 @@ export class ManagerDemandesRendezVousComponent implements OnInit{
     const checkUser = JSON.parse(sessionStorage.getItem('currentUser')!);
     if(checkUser) this.currentUser = checkUser;
     else this.router.navigateByUrl('manager');
-    this.loadDemandesRDV(this.currentUser.idGarage);
+    this.activatedRoute.params.subscribe(params => {
+      this.page = params['page'];
+      this.loadDemandesRDV(this.page);
+    });
   }
 
   loadDemandesRDV(page:number) : void {
     const demandesFilter = {
-      idGarage : this.currentUser._garage,
+      idGarage : this.currentUser.idGarage._id,
       status : { $lt : 2 }
     }
     this.demandeRDVService.filterDemandesRDV(page,demandesFilter).subscribe(data => {
@@ -55,7 +58,7 @@ export class ManagerDemandesRendezVousComponent implements OnInit{
     };
     this.demandeRDVService.updateDemandeRDV(id,nouvelleDemandeRDV).subscribe(data => {
       alert("Demande de rendez-vous refusée");
-      this.router.navigateByUrl('manager/demandes-rendez-vous/1');
+      this.loadDemandesRDV(this.page);
     });
   }
 }

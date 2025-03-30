@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Employee = require('../model/Employee');
 
+const limit=10;
+
 //Create an Employee
 router.post('/', async (req, res) => {
     try{
@@ -59,6 +61,52 @@ router.post('/signin', async (req, res) => {
     }
 })
 
+//Search for employees with pagination
+router.post('/search/:page', async (req, res) => {
+    try {
+        const maintenant = new Date();
+        maintenant.setHours(0,0,0,0);
+
+        const count = await Employee.countDocuments(req.body);
+        const employees = await Employee.find(req.body)
+            .populate('idRole')
+            .populate({
+                path:'salaire',
+                match:{'date': { $lte : maintenant }},
+                options:{'sort':{'date':-1},'limit':1}
+            })
+            .skip((req.params.page - 1)*limit)
+            .limit(limit);
+        
+        const response = {
+            status : 200,
+            nombreElement : employees.length,
+            nombreMaxElement : count,
+            page : parseInt(req.params.page),
+            pageMax : parseInt((count/limit)+1),
+            employees : employees.map(employee => ({
+                username : employee.username,
+                motdepasse : employee.motdepasse,
+                nom : employee.nom,
+                prenom : employee.prenom,
+                tel : employee.tel,
+                idRole : employee.idRole,
+                idGarage: employee.idGarage,
+                estActif : employee.estActif,
+                salaire : employee.salaire[0],
+                _id : employee._id,
+                createdAt : employee.createdAt,
+                updatedAt : employee.updatedAt,
+                __v: employee.__v
+            }))
+        };
+
+        res.json(response);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
 //Read all Employees
 router.get('/', async (req, res) => {
     try{
@@ -68,6 +116,37 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+//Get Details employee by id as manager
+router.get('/asManager/:id', async (req,res)=>{
+    try {
+        const maintenant= new Date();
+        maintenant.setHours(0,0,0,0);
+
+        const employee = await Employee.findById(req.params.id)
+            .populate('idRole')
+            .populate({
+                path:'conges',
+                match:{'fin':{ $gte : maintenant }},
+                options:{'sort':{'debut':1}}
+            })
+            .populate({
+                path:'salaire',
+                match:{'date': { $lte : maintenant }},
+                options:{'sort':{'date':-1},'limit':1}
+            })
+            .populate({
+                path:'specialities',
+                populate:{
+                    path:'idService'
+                }
+            })
+            .lean();
+        res.json(employee);
+    } catch (error) {
+        res.status(500).json({message:error.message});
+    }
+})
 
 //Update an Employee by id
 router.put('/:id', async (req, res) => {
