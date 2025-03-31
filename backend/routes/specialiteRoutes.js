@@ -6,7 +6,7 @@ const Specialite = require('../model/Specialite');
 router.post('/', async (req, res) => {
     try{
         const check = await Specialite.find(req.body);
-        if(check) throw new Error("Spécialité déjà enregistré");
+        if(check.length>0) throw new Error("Spécialité déjà enregistré");
         const specialite = new Specialite(req.body);
         await specialite.save();
         res.status(201).json(specialite);

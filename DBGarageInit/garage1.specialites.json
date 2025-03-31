@@ -1,0 +1,288 @@
+[{
+  "_id": {
+    "$oid": "67eb0e938bf98b7484691cf7"
+  },
+  "idEmployee": {
+    "$oid": "67d289293b5554822612e8af"
+  },
+  "idService": {
+    "$oid": "67eaef8e91c591e716152d3b"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:52:19.122Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:52:19.122Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0ec48bf98b7484691cfa"
+  },
+  "idEmployee": {
+    "$oid": "67d289293b5554822612e8af"
+  },
+  "idService": {
+    "$oid": "67eaefc091c591e716152d3d"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:53:08.582Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:53:08.582Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0ed28bf98b7484691cfd"
+  },
+  "idEmployee": {
+    "$oid": "67eafe250cffc79c4f8da335"
+  },
+  "idService": {
+    "$oid": "67eaefe691c591e716152d3f"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:53:22.353Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:53:22.353Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0ee28bf98b7484691d00"
+  },
+  "idEmployee": {
+    "$oid": "67eafe6f0cffc79c4f8da337"
+  },
+  "idService": {
+    "$oid": "67eaf01291c591e716152d41"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:53:38.476Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:53:38.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0ef18bf98b7484691d03"
+  },
+  "idEmployee": {
+    "$oid": "67eb00a30cffc79c4f8da339"
+  },
+  "idService": {
+    "$oid": "67eaf04591c591e716152d43"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:53:53.585Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:53:53.585Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f088bf98b7484691d06"
+  },
+  "idEmployee": {
+    "$oid": "67eb00bf0cffc79c4f8da33b"
+  },
+  "idService": {
+    "$oid": "67eaf07b91c591e716152d45"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:54:16.452Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:54:16.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f1f8bf98b7484691d09"
+  },
+  "idEmployee": {
+    "$oid": "67eb00bf0cffc79c4f8da33b"
+  },
+  "idService": {
+    "$oid": "67eaf0b791c591e716152d47"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:54:39.433Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:54:39.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f2d8bf98b7484691d0c"
+  },
+  "idEmployee": {
+    "$oid": "67eb01230cffc79c4f8da341"
+  },
+  "idService": {
+    "$oid": "67eaf20791c591e716152d4d"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:54:53.042Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:54:53.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f418bf98b7484691d0f"
+  },
+  "idEmployee": {
+    "$oid": "67eb036e0cffc79c4f8da343"
+  },
+  "idService": {
+    "$oid": "67eaf0e991c591e716152d49"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:55:13.128Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:55:13.128Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f4f8bf98b7484691d12"
+  },
+  "idEmployee": {
+    "$oid": "67eb03910cffc79c4f8da345"
+  },
+  "idService": {
+    "$oid": "67eaf13691c591e716152d4b"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:55:27.166Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:55:27.166Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f5c8bf98b7484691d15"
+  },
+  "idEmployee": {
+    "$oid": "67eb03bb0cffc79c4f8da347"
+  },
+  "idService": {
+    "$oid": "67eaef8e91c591e716152d3b"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:55:40.091Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:55:40.091Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f698bf98b7484691d18"
+  },
+  "idEmployee": {
+    "$oid": "67eb03bb0cffc79c4f8da347"
+  },
+  "idService": {
+    "$oid": "67eaefc091c591e716152d3d"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:55:53.979Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:55:53.979Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f768bf98b7484691d1b"
+  },
+  "idEmployee": {
+    "$oid": "67eb05960cffc79c4f8da349"
+  },
+  "idService": {
+    "$oid": "67eaefe691c591e716152d3f"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:56:06.071Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:56:06.071Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f828bf98b7484691d1e"
+  },
+  "idEmployee": {
+    "$oid": "67eb05960cffc79c4f8da349"
+  },
+  "idService": {
+    "$oid": "67eaf01291c591e716152d41"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:56:18.237Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:56:18.237Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0f908bf98b7484691d21"
+  },
+  "idEmployee": {
+    "$oid": "67eb05c30cffc79c4f8da34b"
+  },
+  "idService": {
+    "$oid": "67eaf04591c591e716152d43"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:56:32.436Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:56:32.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb0fa38bf98b7484691d24"
+  },
+  "idEmployee": {
+    "$oid": "67eb05f10cffc79c4f8da34d"
+  },
+  "idService": {
+    "$oid": "67eaf07b91c591e716152d45"
+  },
+  "createdAt": {
+    "$date": "2025-03-31T21:56:51.281Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:56:51.281Z"
+  },
+  "__v": 0
+}]

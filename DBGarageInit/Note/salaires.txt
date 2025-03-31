@@ -1,0 +1,82 @@
+{
+	"idEmployee":"67d289293b5554822612e8af",
+    "date":"2025-04-01",
+    "montant":1000000
+}
+{
+	"idEmployee":"67d28a083b5554822612e8b1",
+    "date":"2025-04-01",
+    "montant":1200000
+}
+{
+	"idEmployee":"67d28a653b5554822612e8b3",
+    "date":"2025-04-01",
+    "montant":1100000
+}
+{
+	"idEmployee":"67d28c403b5554822612e8b5",
+    "date":"2025-04-01",
+    "montant":1000000
+}
+
+
+{
+	"idEmployee":"67d289293b5554822612e8af",
+    "date":"2025-04-01",
+    "montant":520000
+}
+{
+    "idEmployee": "67eafe250cffc79c4f8da335",
+    "date":"2025-04-01",
+    "montant":540000
+}
+{
+    "idEmployee": "67eafe6f0cffc79c4f8da337",
+    "date":"2025-04-01",
+    "montant":530000
+}
+{
+    "idEmployee": "67eb00a30cffc79c4f8da339",
+    "date":"2025-04-01",
+    "montant":520000
+}
+{
+    "idEmployee": "67eb00bf0cffc79c4f8da33b",
+    "date":"2025-04-01",
+    "montant":550000
+}
+{
+    "idEmployee": "67eb01230cffc79c4f8da341",
+    "date":"2025-04-01",
+    "montant":550000
+}
+{
+    "idEmployee": "67eb036e0cffc79c4f8da343",
+    "date":"2025-04-01",
+    "montant":510000
+}
+{
+    "idEmployee": "67eb03910cffc79c4f8da345",
+    "date":"2025-04-01",
+    "montant":510000
+}
+{
+    "idEmployee": "67eb03bb0cffc79c4f8da347",
+    "date":"2025-04-01",
+    "montant":530000
+}
+{
+    "idEmployee": "67eb05960cffc79c4f8da349",
+    "date":"2025-04-01",
+    "montant":510000
+}
+{
+    "idEmployee": "67eb05c30cffc79c4f8da34b",
+    "date":"2025-04-01",
+    "montant":510000
+}
+{
+    "idEmployee": "67eb05f10cffc79c4f8da34d",
+    "date":"2025-04-01",
+    "montant":500000
+}

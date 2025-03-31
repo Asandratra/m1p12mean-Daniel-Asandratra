@@ -13,6 +13,6 @@ const PrixSchema = new mongoose.Schema({
             message: "Le prix de service ne peut être inférieur à 0"
         }
     }
-}, { timestamps: true }, {collection: 'service'});
+}, { timestamps: true }, {collection: 'prix'});
 
 module.exports = mongoose.model('Prix', PrixSchema);

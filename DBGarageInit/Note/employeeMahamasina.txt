@@ -1,0 +1,45 @@
+"idGarage":"67d283a6b9e2b126e5db899f"
+
+--Manager--"idRole":"67d15b7442ec1c24c28bcd2a"
+{
+	"_id":"67d28a653b5554822612e8b3",
+	"username":"managerMahamasina",
+	"motdepasse":"garagiste3",
+	"nom":"Randriavelo",
+	"prenom":"Toky",
+	"tel":"0338291048",
+	"idRole":"67d15b7442ec1c24c28bcd2a",
+	"idGarage":"67d283a6b9e2b126e5db899f"
+}
+
+--Mecanicien--"idRole":"67d15b9442ec1c24c28bcd2d",
+{
+    "_id": "67eb036e0cffc79c4f8da343",
+	"username":"solo",
+	"motdepasse":"1234",
+	"nom":"Raharimanana",
+	"prenom":"Solo",
+	"tel":"0336629041",
+	"idRole":"67d15b9442ec1c24c28bcd2d",
+	"idGarage":"67d283a6b9e2b126e5db899f"
+}
+{
+    "_id": "67eb03910cffc79c4f8da345",
+	"username":"dada",
+	"motdepasse":"1234",
+	"nom":"Rabemananjara",
+	"prenom":"Dada",
+	"tel":"0335733427",
+	"idRole":"67d15b9442ec1c24c28bcd2d",
+	"idGarage":"67d283a6b9e2b126e5db899f"
+}
+{
+    "_id": "67eb03bb0cffc79c4f8da347",
+	"username":"fetra",
+	"motdepasse":"1234",
+	"nom":"Rakotonirina",
+	"prenom":"Fetra",
+	"tel":"0334357401",
+	"idRole":"67d15b9442ec1c24c28bcd2d",
+	"idGarage":"67d283a6b9e2b126e5db899f"
+}

@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "67d15b7442ec1c24c28bcd2a"
+  },
+  "label": "Manager",
+  "createdAt": {
+    "$date": "2025-03-12T10:01:24.240Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-12T10:01:24.240Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "label": "Mécanicien",
+  "createdAt": {
+    "$date": "2025-03-12T10:01:56.995Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-12T10:01:56.995Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,19 @@
+Client
+"username" : "asandratra",
+"motdepasse" : "asaminya"
+
+"username" : "mitia"
+"motdepasse" : "1234"
+
+MANAGER
+"username" : "managerAntanimena",
+"motdepasse" : "garagiste1"
+
+"username" : "managerAnalakely",
+"motdepasse" : "garagiste2"
+
+"username" : "managerMahamasina",
+"motdepasse" : "garagiste3"
+
+"username" : "managerAmbatobe",
+"motdepasse" : "garagiste4"

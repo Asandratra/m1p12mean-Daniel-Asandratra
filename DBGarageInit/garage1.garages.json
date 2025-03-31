@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "67d28369b9e2b126e5db8999"
+  },
+  "localisation": "Antanimena",
+  "place": 7,
+  "createdAt": {
+    "$date": "2025-03-13T07:04:09.952Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T07:04:09.952Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d28376b9e2b126e5db899b"
+  },
+  "localisation": "Analakely",
+  "place": 6,
+  "createdAt": {
+    "$date": "2025-03-13T07:04:22.487Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T07:04:41.992Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d283a6b9e2b126e5db899f"
+  },
+  "localisation": "Mahamasina",
+  "place": 5,
+  "createdAt": {
+    "$date": "2025-03-13T07:05:10.949Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T07:05:10.949Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d28559b9e2b126e5db89a5"
+  },
+  "localisation": "Ambatobe",
+  "place": 6,
+  "createdAt": {
+    "$date": "2025-03-13T07:12:25.670Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T07:12:25.670Z"
+  },
+  "__v": 0
+}]

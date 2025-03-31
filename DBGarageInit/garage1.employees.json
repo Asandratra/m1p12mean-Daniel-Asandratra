@@ -1,0 +1,384 @@
+[{
+  "_id": {
+    "$oid": "67d289293b5554822612e8af"
+  },
+  "username": "managerAntanimena",
+  "motdepasse": "$2b$10$EeE/Zg.FZtgPOm7ztzJQCORkXjtK4J67//FW/G/tSM1ZIvTHwVgla",
+  "nom": "Rakotoson",
+  "prenom": "Ndrema",
+  "tel": "0397389501",
+  "idRole": {
+    "$oid": "67d15b7442ec1c24c28bcd2a"
+  },
+  "idGarage": {
+    "$oid": "67d28369b9e2b126e5db8999"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-13T07:28:41.250Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T07:28:41.250Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d28a083b5554822612e8b1"
+  },
+  "username": "managerAnalakely",
+  "motdepasse": "$2b$10$58Mj333NkqY7/gVrvL5MjuwDRrxWAooyIDIno5aeiQtTPoLFTOAuy",
+  "nom": "Andrianary",
+  "prenom": "Kevin",
+  "tel": "0387105729",
+  "idRole": {
+    "$oid": "67d15b7442ec1c24c28bcd2a"
+  },
+  "idGarage": {
+    "$oid": "67d28376b9e2b126e5db899b"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-13T07:32:24.408Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T07:32:24.408Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d28a653b5554822612e8b3"
+  },
+  "username": "managerMahamasina",
+  "motdepasse": "$2b$10$neTHwQmZ5SAL6lt4RELHD.5iXzQ3W1XkkLYMli66QnGgO28.yijKK",
+  "nom": "Randriavelo",
+  "prenom": "Toky",
+  "tel": "0338291048",
+  "idRole": {
+    "$oid": "67d15b7442ec1c24c28bcd2a"
+  },
+  "idGarage": {
+    "$oid": "67d283a6b9e2b126e5db899f"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-13T07:33:57.030Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T07:33:57.030Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d28c403b5554822612e8b5"
+  },
+  "username": "managerAmbatobe",
+  "motdepasse": "$2b$10$i0omh06teVxBNoEjrdDNquQo3FVznutHUlQ8APQgnjPmy5Z7ewNtm",
+  "nom": "Razanaka",
+  "prenom": "Zo",
+  "tel": "0349189504",
+  "idRole": {
+    "$oid": "67d15b7442ec1c24c28bcd2a"
+  },
+  "idGarage": {
+    "$oid": "67d28559b9e2b126e5db89a5"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-13T07:41:52.768Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T07:41:52.768Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67e7bea0379c04c94ff2f058"
+  },
+  "username": "andry",
+  "motdepasse": "$2b$10$DAILRJ1x4PIPcT5DVDmUruQcuECokwCRmnsIrcNuAUnUun/gPqDRi",
+  "nom": "Rabemanana",
+  "prenom": "Andry",
+  "tel": "0341962853",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d28369b9e2b126e5db8999"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-29T09:34:24.374Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-29T09:34:24.374Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eafe250cffc79c4f8da335"
+  },
+  "username": "tojo",
+  "motdepasse": "$2b$10$jx40uJgxoHdckrc8kmPfzu2w.gtG/MmZPghT.ksa/t0gKSDszUu5O",
+  "nom": "Rakotomalala",
+  "prenom": "Tojo",
+  "tel": "0348491735",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d28369b9e2b126e5db8999"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T20:42:13.658Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T20:42:13.658Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eafe6f0cffc79c4f8da337"
+  },
+  "username": "hery",
+  "motdepasse": "$2b$10$ht6Oc21vHqggj0u0LfH/Au6JZkcXiv3w5tDjP8R7GPFjkP2ZUkJU2",
+  "nom": "Andrianantenaina",
+  "prenom": "Hery",
+  "tel": "0348619274",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d28369b9e2b126e5db8999"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T20:43:27.569Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T20:43:27.569Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb00a30cffc79c4f8da339"
+  },
+  "username": "faly",
+  "motdepasse": "$2b$10$nF.b5tMYgGVYtKGlCGHiTen/PGFXkaHgCo4ruV5cP8M7eZFwV3W2C",
+  "nom": "Razafindrabe",
+  "prenom": "Faly",
+  "tel": "0324596732",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d28376b9e2b126e5db899b"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T20:52:51.558Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T20:52:51.558Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb00bf0cffc79c4f8da33b"
+  },
+  "username": "tiana",
+  "motdepasse": "$2b$10$T580Zm17zn1cSZ4EC/IEc.zMPTfLX8zF6j9ieBMB1Cxf3enh7sxLu",
+  "nom": "Ramaroson",
+  "prenom": "Tiana",
+  "tel": "0341299356",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d28376b9e2b126e5db899b"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T20:53:19.819Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T20:53:19.819Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb01230cffc79c4f8da341"
+  },
+  "username": "mamy",
+  "motdepasse": "$2b$10$dHqRKVUk1S3V08oVqcYOpu1XhShRbp4J6AzQsQ6PqVhGopjYVr.K.",
+  "nom": "Randrianarisoa",
+  "prenom": "Mamy",
+  "tel": "0342947103",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d28376b9e2b126e5db899b"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T20:54:59.322Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T20:54:59.322Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb036e0cffc79c4f8da343"
+  },
+  "username": "solo",
+  "motdepasse": "$2b$10$lK0NyvEX3nXpS/yh5TsU4.m9jDwDc7oNH2dDkTpf29MgIsTgky42a",
+  "nom": "Raharimanana",
+  "prenom": "Solo",
+  "tel": "0336629041",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d283a6b9e2b126e5db899f"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T21:04:46.986Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:04:46.986Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb03910cffc79c4f8da345"
+  },
+  "username": "dada",
+  "motdepasse": "$2b$10$Lvx74//NDAAkMM54udeduOAcB9AaKdt8N.UCz70ys.Oz4toNTgZAy",
+  "nom": "Rabemananjara",
+  "prenom": "Dada",
+  "tel": "0335733427",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d283a6b9e2b126e5db899f"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T21:05:21.608Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:05:21.608Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb03bb0cffc79c4f8da347"
+  },
+  "username": "fetra",
+  "motdepasse": "$2b$10$FGsEPZr/T28yTOK1EBcorOWsvO3wQmD0Zdh4vj6NPJVb0XDLleYXW",
+  "nom": "Rakotonirina",
+  "prenom": "Fetra",
+  "tel": "0334357401",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d283a6b9e2b126e5db899f"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T21:06:03.529Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:06:03.529Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb05960cffc79c4f8da349"
+  },
+  "username": "bema",
+  "motdepasse": "$2b$10$OHSVtyWika4vyKXZBlShj.VIHVDQNqTq3nVgktkAHHqahgKKN0Mnm",
+  "nom": "Rasolofonirina",
+  "prenom": "Bema",
+  "tel": "0345391837",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d28559b9e2b126e5db89a5"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T21:13:58.242Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:13:58.242Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb05c30cffc79c4f8da34b"
+  },
+  "username": "landy",
+  "motdepasse": "$2b$10$yp3Qj2NQtlCd5xEpW2FSLurM1r4k1FJ6M7pd/ZBa49h9NRMPB6QBy",
+  "nom": "Andriamampianina",
+  "prenom": "Landy",
+  "tel": "0340265811",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d28559b9e2b126e5db89a5"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T21:14:43.547Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:14:43.547Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eb05f10cffc79c4f8da34d"
+  },
+  "username": "tahina",
+  "motdepasse": "$2b$10$TVekO3MGLjAsTPEBZoIGtubeWkdA.flEYmCWXanJ0XaqIRVB0GA2q",
+  "nom": "Raharivelo",
+  "prenom": "Tahina",
+  "tel": "0343267419",
+  "idRole": {
+    "$oid": "67d15b9442ec1c24c28bcd2d"
+  },
+  "idGarage": {
+    "$oid": "67d28559b9e2b126e5db89a5"
+  },
+  "estActif": true,
+  "createdAt": {
+    "$date": "2025-03-31T21:15:29.363Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T21:15:29.363Z"
+  },
+  "__v": 0
+}]
