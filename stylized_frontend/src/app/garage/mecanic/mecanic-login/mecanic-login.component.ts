@@ -38,6 +38,9 @@ export class MecanicLoginComponent implements OnInit {
         if(data.idRole.label=='Manager'){
           this.router.navigateByUrl(`manager/travaux/1`);
         }
+        else{
+          this.router.navigateByUrl('mecanic/travaux/1');
+        }
       }, error=>{
         this.errorMessage=error.message;
       });
