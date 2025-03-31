@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "67d3e2852c367d53b10e5dd6"
+  },
+  "username": "asandratra",
+  "motdepasse": "$2b$10$wPaR1/ktbu6yRR7q2BwSD.3mzcLPsLcr1/Ztkx1JmxUzhYpj99zni",
+  "nom": "Rakotondramaka",
+  "prenom": "Asandratra",
+  "tel": "0324519183",
+  "createdAt": {
+    "$date": "2025-03-14T08:02:13.072Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-14T08:02:13.072Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67e7b5ec2396258f5d7447d9"
+  },
+  "username": "mitia",
+  "motdepasse": "$2b$10$Ljqgm4/0.WkC2yHaD7y6F.4/qz0wIeGTtf/cvGaTKRv4lyAVJJRpy",
+  "nom": "Razanakoto",
+  "prenom": "Mitia",
+  "tel": "0321943790",
+  "createdAt": {
+    "$date": "2025-03-29T08:57:16.398Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-29T08:57:16.398Z"
+  },
+  "__v": 0
+}]

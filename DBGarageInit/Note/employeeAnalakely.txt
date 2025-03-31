@@ -1,0 +1,45 @@
+"idGarage":"67d28376b9e2b126e5db899b"
+
+--Manager--"idRole":"67d15b7442ec1c24c28bcd2a"
+{
+	"_id":"67d28a083b5554822612e8b1",
+	"username":"managerAnalakely",
+	"motdepasse":"garagiste2",
+	"nom":"Andrianary",
+	"prenom":"Kevin",
+	"tel":"0387105729",
+	"idRole":"67d15b7442ec1c24c28bcd2a",
+	"idGarage":"67d28376b9e2b126e5db899b"
+}
+
+--Mecanicien--"idRole":"67d15b9442ec1c24c28bcd2d",
+{
+    "_id": "67eb00a30cffc79c4f8da339",
+	"username":"faly",
+	"motdepasse":"1234",
+	"nom":"Razafindrabe",
+	"prenom":"Faly",
+	"tel":"0324596732",
+	"idRole":"67d15b9442ec1c24c28bcd2d",
+	"idGarage":"67d28376b9e2b126e5db899b"
+}
+{
+    "_id": "67eb00bf0cffc79c4f8da33b",
+	"username":"tiana",
+	"motdepasse":"1234",
+	"nom":"Ramaroson",
+	"prenom":"Tiana",
+	"tel":"0341299356",
+	"idRole":"67d15b9442ec1c24c28bcd2d",
+	"idGarage":"67d28376b9e2b126e5db899b"
+}
+{
+    "_id": "67eb01230cffc79c4f8da341",
+	"username":"mamy",
+	"motdepasse":"1234",
+	"nom":"Randrianarisoa",
+	"prenom":"Mamy",
+	"tel":"0342947103",
+	"idRole":"67d15b9442ec1c24c28bcd2d",
+	"idGarage":"67d28376b9e2b126e5db899b"
+}

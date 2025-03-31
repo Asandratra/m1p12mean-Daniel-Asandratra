@@ -1,0 +1,50 @@
+{
+	"_id": "67eaef8e91c591e716152d3b",
+	"label":"Contrôle de pression de pneus",
+	"duree":10
+}
+{
+	"_id": "67eaefc091c591e716152d3d",
+	"label":"Diagnostic simple",
+	"duree":20
+}
+{
+	"_id": "67eaefe691c591e716152d3f",
+	"label":"Vidange moteur et remplacement filtre à huile",
+	"duree":45
+}
+{
+	"_id": "67eaf01291c591e716152d41",
+	"label":"Réglage parallélisme",
+	"duree":60
+}
+{
+	"_id": "67eaf04591c591e716152d43",
+	"label":"Recharge climatisation",
+	"duree":60
+}
+{
+	"_id": "67eaf07b91c591e716152d45",
+	"label":"Remplacement plaquettes de frein",
+	"duree":120
+}
+{
+	"_id": "67eaf0b791c591e716152d47",
+	"label":"Révision complète",
+	"duree":240
+}
+{
+	"_id": "67eaf20791c591e716152d4d",
+	"label":"Réparation système de suspension",
+	"duree":360
+}
+{
+	"_id": "67eaf0e991c591e716152d49",
+	"label":"Peinture et polissage carosserie",
+	"duree":4320
+}
+{
+	"_id": "67eaf13691c591e716152d4b",
+	"label":"Réfection complète moteur",
+	"duree":10080
+}
