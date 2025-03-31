@@ -88,6 +88,10 @@ export class ManagerDetailsEmployeeComponent implements OnInit {
           conge.debut=this.debutConge;
           conge.fin=this.finConge;
           this.congeService.createConge(conge).subscribe(data=>{
+            alert('Congé enregistré!');
+            this.debutConge='';
+            this.finConge='';
+            this.congeIntervalle=false;
             this.loadEmployee(this.idEmployee);
           },error=>{
             this.errorMessage=error.message;
@@ -103,6 +107,11 @@ export class ManagerDetailsEmployeeComponent implements OnInit {
         conge.debut=this.debutConge;
         conge.fin=this.debutConge;
         this.congeService.createConge(conge).subscribe(data=>{
+          alert('Congé enregistré!');
+          this.debutConge='';
+          this.finConge='';
+          this.congeIntervalle=false;
+          this.loadEmployee(this.idEmployee);
           this.loadEmployee(this.idEmployee);
         },error=>{
           this.errorMessage=error.message;

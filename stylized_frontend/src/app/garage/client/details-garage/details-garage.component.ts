@@ -53,13 +53,13 @@ export class ClientDetailsGarageComponent implements OnInit{
       };
       this.demandeRDVService.addDemandeRDV(demandeRDV).subscribe(data => {
         alert("Demande de rendez-vous envoyée.");
-        this.router.navigateByUrl('garage/list/1')
+        this.dateHeure='';
       }, error=> {
         this.errorMessage=error.message;
       });
     }
     else{
-      alert("Veuillez bien spécifier la date à laquelle vous souhaitez prendre rendez-vous.");
+      this.errorMessage="Veuillez bien spécifier la date à laquelle vous souhaitez prendre rendez-vous.";
     }
   }
 }

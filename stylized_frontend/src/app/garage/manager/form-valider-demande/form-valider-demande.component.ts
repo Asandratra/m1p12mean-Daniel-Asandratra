@@ -67,7 +67,8 @@ export class FormValiderDemandeComponent implements OnInit {
           status : 1
         };
         this.demandeRDVService.updateDemandeRDV(this.demandeRDV._id,nouvelleDemandeRDV).subscribe(data => {
-          this.router.navigateByUrl('manager/demandes-rendez-vous/1');
+          alert("Demande de confirmation de rendez-vous envoyée.");
+          this.dateHeure='';
         }, error=>{
           this.errorMessage=error.message;
         });
