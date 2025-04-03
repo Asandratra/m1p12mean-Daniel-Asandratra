@@ -8,8 +8,8 @@
                         <li class="list-group-item">Client : {{ travail.idClient?.nom }} {{ travail.idClient?.prenom }}</li>
                         <li class="list-group-item">Tel. Client : {{ travail.idClient?.tel }}</li>
                         <li class="list-group-item">Estimation de durée : du {{ travail.debutTravail | date : 'dd/MM/yyyy à HH:mm' }} jusqu'au {{ travail.finEstimation | date : 'dd/MM/yyyy à HH:mm' }}</li>
-                        <li class="list-group-item">Prix total : Ar {{ travail.prix }}</li>
-                        <li class="list-group-item">Reste à payer : Ar {{ travail.prix - travail.totalPayer }}</li>
+                        <li class="list-group-item">Prix total : Ar {{ travail.prix | number }}</li>
+                        <li class="list-group-item">Reste à payer : Ar {{ travail.prix - travail.totalPayer | number }}</li>
                     </ul>
                 </div>
             </div>

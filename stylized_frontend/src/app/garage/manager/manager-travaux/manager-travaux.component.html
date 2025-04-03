@@ -22,6 +22,7 @@
                     <th class="text-center">PRIX TOTAL</th>
                     <th class="text-center">RESTE A PAYER</th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,9 +33,19 @@
                         <td class="text-center">{{ travail.idClient.tel }}</td>
                         <td class="text-center">{{ travail.debutTravail | date : 'dd/MM/yyyy à HH:mm' }} </td>
                         <td class="text-center">{{ travail.finEstimation | date : 'dd/MM/yyyy à HH:mm' }} </td>
-                        <td class="text-center"> En cours </td>
+                        <td class="text-center"> {{ status[travail.status] }}</td>
                         <td class="text-center">Ar {{ travail.prix | number }}</td>
                         <td class="text-center">Ar {{ (travail.prix - travail.totalPayer) | number }}</td>
+                        @if(travail.status==0){
+                            <td class="text-center">
+                                <form (ngSubmit)="terminerTravail(travail._id)"><button class="btn btn-primary" type="submit">Terminer</button></form>
+                            </td>
+                        }
+                        @else {
+                            <td class="text-center">
+                                <form (ngSubmit)="supprimerTravail(travail._id)"><button class="btn btn-danger" type="submit">Supprimer</button></form>
+                            </td>
+                        }
                         <td class="text-end">
                             <a class="link-primary" [routerLink]="['/manager/travail',travail._id]">Voir Details</a>
                         </td>

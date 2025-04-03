@@ -16,12 +16,20 @@ export class ManagerTravauxComponent implements OnInit{
   pageMax = 1;
   travaux : any[] = [];
 
+  currentUser : any;
+
+  status = ["En cours", "Terminé", "Supprimé"];
+
+  errorMessage='';
+
   constructor(
     private travailService:TravailService,
     private activatedRoute:ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
+    const checkUser = JSON.parse(sessionStorage.getItem("currentUser"));
+    if(checkUser) this.currentUser=checkUser;
     this.activatedRoute.params.subscribe(params => {
       this.page = params['page'];
       this.loadTravaux(this.page);
@@ -29,11 +37,31 @@ export class ManagerTravauxComponent implements OnInit{
   }
 
   loadTravaux(page:number): void {
-    const travailFilter = {};
+    const travailFilter = {
+      idGarage : this.currentUser.idGarage,
+      status : {
+        $lt : 2
+      }
+    };
     this.travailService.filterTravail(page, travailFilter).subscribe(data => {
       this.pageMax = data.pageMax;
       this.travaux = data.travaux;
     })
   }
 
+  terminerTravail(travailId:string) : void {
+    this.travailService.updateStatusTravail(travailId,1).subscribe( success => {
+      this.loadTravaux(this.page);
+    }, error => {
+      this.errorMessage=error.message;
+    })
+  }
+
+  supprimerTravail(travailId:string) : void {
+    this.travailService.updateStatusTravail(travailId,2).subscribe( success => {
+      this.loadTravaux(this.page);
+    }, error => {
+      this.errorMessage=error.message;
+    })
+  }
 }

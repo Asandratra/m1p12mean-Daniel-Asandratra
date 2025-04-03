@@ -149,6 +149,7 @@ export class ManagerDetailsTravauxComponent implements OnInit{
       this.paiementService.addPaiement(this.paiement).subscribe(data => {
         alert('Sauvegarde réussie');
         this.paiement = { ...this.initPaiement };
+        this.loadTravail(this.idTravail);
       }, error => {
         this.paiementError = error.message;
       })
