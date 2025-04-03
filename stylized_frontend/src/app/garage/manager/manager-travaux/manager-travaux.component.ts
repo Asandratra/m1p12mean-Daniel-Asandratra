@@ -57,11 +57,17 @@ export class ManagerTravauxComponent implements OnInit{
     })
   }
 
-  supprimerTravail(travailId:string) : void {
-    this.travailService.updateStatusTravail(travailId,2).subscribe( success => {
-      this.loadTravaux(this.page);
-    }, error => {
-      this.errorMessage=error.message;
-    })
+  supprimerTravail(travailId:string, resteAPayer:number) : void {
+    var confirmed = false;
+    if(resteAPayer>0){
+      confirmed = confirm("Le paiement pour ce travail n'a pas encore été complété. Voulez-vous réellement le retirer ?");
+    }
+    if(confirmed){
+      this.travailService.updateStatusTravail(travailId,2).subscribe( success => {
+        this.loadTravaux(this.page);
+      }, error => {
+        this.errorMessage=error.message;
+      })
+    }
   }
 }

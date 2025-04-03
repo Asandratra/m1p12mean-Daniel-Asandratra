@@ -43,7 +43,7 @@
                         }
                         @else {
                             <td class="text-center">
-                                <form (ngSubmit)="supprimerTravail(travail._id)"><button class="btn btn-danger" type="submit">Supprimer</button></form>
+                                <form (ngSubmit)="supprimerTravail(travail._id,(travail.prix - travail.totalPayer))"><button class="btn btn-danger" type="submit">Retirer</button></form>
                             </td>
                         }
                         <td class="text-end">
