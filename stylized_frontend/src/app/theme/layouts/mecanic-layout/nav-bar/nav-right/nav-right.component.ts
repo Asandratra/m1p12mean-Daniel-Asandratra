@@ -1,5 +1,5 @@
 // angular import
-import { Component, inject, input, output } from '@angular/core';
+import { Component,  OnInit, inject, input, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // project import
@@ -34,8 +34,10 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
   templateUrl: './nav-right.component.html',
   styleUrls: ['./nav-right.component.scss']
 })
-export class NavRightComponent {
+export class NavRightComponent implements OnInit{
   private iconService = inject(IconService);
+
+  currentUser:any;
 
   styleSelectorToggle = input<boolean>();
   Customize = output();
@@ -108,4 +110,7 @@ export class NavRightComponent {
       title: 'History'
     }
   ];
+  ngOnInit(): void {
+    this.currentUser=JSON.parse(sessionStorage.getItem("currentUser"));
+  }
 }

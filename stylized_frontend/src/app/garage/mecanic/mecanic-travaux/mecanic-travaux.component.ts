@@ -32,7 +32,10 @@ export class MecanicTravauxComponent implements OnInit{
 
   loadTravaux(page:number): void {
     const travailFilter = {
-      selectedMecanicien: this.currentUser._id
+      selectedMecanicien: this.currentUser._id,
+      status:{
+        $lt:1
+      }
     };
     this.travailService.filterTravail(page, travailFilter).subscribe(data => {
       this.pageMax = data.pageMax;
