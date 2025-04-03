@@ -1,12 +1,12 @@
 <div class="card d-flex justify-content-center">
     <div class="card-body col-x1-12">
-        <h5 class="mb-4">Diagnostic sur le vehicule [MATRICULE]</h5>
+        <h5 class="mb-4">Diagnostic sur le vehicule {{travail.matricule}}</h5>
         <div class="card">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Garage [Localisation]</li>
-                <li class="list-group-item">Estimation de durée : du [Date de début] jusq'au [Estimation de fin]</li>
-                <li class="list-group-item">Prix total : [prix total du travail]</li>
-                <li class="list-group-item">Reste à payer : [montant restant à paye]</li>
+                <li class="list-group-item">Garage {{travail.idGarage.localisation}}</li>
+                <li class="list-group-item">Estimation de durée : du {{ travail.debutTravail | date : 'dd/MM/yyyy à HH:mm' }} jusq'au {{ travail.finEstimation | date : 'dd/MM/yyyy à HH:mm' }}</li>
+                <li class="list-group-item">Prix total : Ar {{travail.prix | number}}</li>
+                <li class="list-group-item">Reste à payer : Ar {{ (travail.prix - travail.totalPayer) | number }}</li>
             </ul>
         </div>
         <div class="card tbl-card">
@@ -22,9 +22,9 @@
                 <tbody>
                 @for (diagnostic of diagnostics; track diagnostics) {
                     <tr>
-                        <td>{{ diagnostic.idService.label }}</td>
-                        <td class="text-center">{{ diagnostic.idService.duree }} mn</td>
-                        <td class="text-center">Ar {{ diagnostic.idService.prix.montant | number }}</td>
+                        <td>{{ diagnostic.label }}</td>
+                        <td class="text-center">{{ diagnostic.duree }} mn</td>
+                        <td class="text-center">Ar {{ diagnostic.prix | number }}</td>
                     </tr>
                 }
                 </tbody>
