@@ -5,38 +5,30 @@
             <p class="text text-danger">{{errorMessage}}</p>
         }
         <div class="tbl-card">
-            <form>
+            <form (ngSubmit)="createTravail()" #createTravailForm="ngForm">
                 <div class="row">
                     <div class="col-sm-5">
+                        @if (errorMessage) {
+                          <p class="text text-danger">{{errorMessage}}</p>
+                        }
+                        <div class="form-group mb-3">
+                          <label for="role">Client</label>
+                          <select class="form-select" id="client" name="client" aria-label="Selection du client" [(ngModel)]="idClient">
+                            @for (client of clients; track client) {
+                              <option [value]="client._id">{{ client.nom }} {{ client.prenom }}</option>
+                            }
+                          </select>
+                        </div>
                         <div class="form-group">
                             <label for="matricule">Matricule du vehicule</label>
-                            <input type="text" class="form-control" id="matricule" placeholder="1234 TA">
-                        </div>
-                        <div class="form-group">
-                            <label for="nomClient">Nom Client</label>
                             <input
-                                type="text"
-                                class="form-control"
-                                id="nomClient"
-                                name="nomClient"
-                                placeholder="Rakotoson Bema"
-                                [(ngModel)]="nomClient"
-                                [value]="nomClient"
-                                [readOnly]="isClientConnu"
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="telClient">Tel. Client</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="telClient"
-                                name="telClient"
-                                placeholder="exemple: 0332459102"
-                                [(ngModel)]="telClient"
-                                [value]="telClient"
-                                [readOnly]="isClientConnu"
-                            />
+                              type="text"
+                              class="form-control"
+                              id="matricule"
+                              placeholder="exemple: 1234 TA"
+                              name="matricule"
+                              [(ngModel)]="matricule"
+                            >
                         </div>
                         <div class="form-group">
                             <label for="debut">Date de début</label>
@@ -45,6 +37,7 @@
                                 class="form-control"
                                 id="debut"
                                 name="debut"
+                                [(ngModel)]="debutTravail"
                             />
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Service = require('../model/Service');
+const Prix = require('../model/Prix');
 
 //Create a Service
 router.post('/', async (req, res) => {
@@ -17,7 +18,21 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try{
         const services = await Service.find();
-        res.json(services);
+        const pricedServices = [];
+        for (let service of services) {
+            const latestPrix = await Prix.findOne({ idService: service._id })
+                .sort({ date: -1 }) // Sort by date descending to get the latest
+                .select('montant'); // Select only the montant field
+            // console.log("service: ", service.label);
+            // console.log("prix: ", latestPrix);
+            // console.log("--------------------");
+            pricedServices.push({
+                ...service._doc,
+                prix: latestPrix ? latestPrix.montant : null,
+            })
+        }
+        console.log("services: ", pricedServices);
+        res.json(pricedServices);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

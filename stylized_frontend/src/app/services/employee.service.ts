@@ -27,4 +27,8 @@ export class EmployeeService {
   getDetailsEmployeeAsManager(id:string): Observable<any> {
     return this.http.get(`${this.apiURL}/asManager/${id}`);
   }
+
+  getMecanoByGarage(idGarage:string): Observable<any> {
+    return this.http.get(`${this.apiURL}/byGarage/${idGarage}`);
+  }
 }

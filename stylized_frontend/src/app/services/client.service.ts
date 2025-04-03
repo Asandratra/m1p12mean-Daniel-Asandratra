@@ -19,5 +19,8 @@ export class ClientService {
   signinClient(client: any): Observable<any> {
     return this.http.post(`${this.apiURL}/signin`, client);
   }
-  
+
+  getAllClient(): Observable<any> {
+    return this.http.get(this.apiURL);
+  }
 }
