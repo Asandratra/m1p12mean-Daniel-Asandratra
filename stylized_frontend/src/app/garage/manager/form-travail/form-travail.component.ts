@@ -118,11 +118,13 @@ export class FormTravailComponent implements OnInit{
     if(this.checkTravailForm()) {
       const travail = this.processData();
       this.travailService.createTravail(travail).subscribe(data => {
-        alert('Sauvegarde réussi!');
+        alert('Sauvegarde réussie');
         this.router.navigateByUrl('manager/travaux/1');
       }, error => {
         this.errorMessage = error.message;
       })
+    } else {
+      this.errorMessage = 'Champ(s) invalid(s)';
     }
   }
 
