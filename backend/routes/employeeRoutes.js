@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Employee = require('../model/Employee');
+const Role = require('../model/Role');
 
 const limit=10;
 
@@ -102,6 +103,20 @@ router.post('/search/:page', async (req, res) => {
         };
 
         res.json(response);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
+//Search mecano by garage
+router.get('/byGarage/:idGarage', async (req, res) => {
+    try {
+        const role = await Role.findOne({ label: "Mécanicien" });
+        const employees = await Employee.find({
+            idRole: role._id,
+            idGarage: req.params.idGarage,
+        })
+        res.json(employees);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
