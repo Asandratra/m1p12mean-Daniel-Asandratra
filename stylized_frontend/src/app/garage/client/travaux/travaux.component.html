@@ -22,7 +22,7 @@
                         <td class="text-center"><a class="link link-primary" [routerLink]="['/client/garage',travail.idGarage._id]">Garage {{travail.idGarage.localisation}}</a></td>
                         <td class="text-center">{{ travail.debutTravail | date : 'dd/MM/yyyy à HH:mm' }} </td>
                         <td class="text-center">{{ travail.finEstimation | date : 'dd/MM/yyyy à HH:mm' }} </td>
-                        <td class="text-center">En Cours</td>
+                        <td class="text-center">{{ status[travail.status] }}</td>
                         <td class="text-center">Ar {{ (travail.prix - travail.totalPayer) | number }}</td>
                         <td class="text-end">
                             <a class="link-primary" [routerLink]="['/client/travail',travail._id]">Voir diagnostic</a>

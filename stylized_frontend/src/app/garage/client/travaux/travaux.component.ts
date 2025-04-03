@@ -17,6 +17,8 @@ export class ClientTravauxComponent implements OnInit{
   travaux : any[] = [];
   currentUser: any = {};
 
+  status = ["En cours", "Terminé","Retiré"];
+
   constructor(
       private travailService:TravailService,
       private activatedRoute:ActivatedRoute,
@@ -32,7 +34,10 @@ export class ClientTravauxComponent implements OnInit{
 
   loadTravaux(page:number): void {
     const travailFilter = {
-      idClient: this.currentUser._id
+      idClient: this.currentUser._id,
+      status : {
+        $lt : 2
+      }
     };
     this.travailService.filterTravail(page, travailFilter).subscribe(data => {
       this.pageMax = data.pageMax;
