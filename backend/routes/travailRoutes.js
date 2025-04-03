@@ -25,6 +25,7 @@ router.post('/search/:page', async (req, res) => {
         const travauxTab = [];
         const travaux = await Travail.find(req.body)
             .populate('idClient')
+            .populate('idGarage')
             .populate({
                 path: 'selectedService',
                 select: 'duree'
@@ -66,6 +67,7 @@ router.get('/:id', async (req, res) => {
     try{
         const travail = await Travail.findById(req.params.id)
             .populate('idClient')
+            .populate('idGarage')
             .populate('selectedService')
             .populate('selectedMecanicien')
         const totalDuree = travail.selectedService.reduce((sum, service) => sum + (service.duree || 0), 0);

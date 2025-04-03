@@ -1,8 +1,9 @@
 import { Component,OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from 'src/app/components/pagination/pagination.component';
+import { TravailService } from 'src/app/services/travail.service';
 
 @Component({
   selector: 'app-travaux',
@@ -11,21 +12,31 @@ import { PaginationComponent } from 'src/app/components/pagination/pagination.co
   styleUrl: './travaux.component.scss'
 })
 export class ClientTravauxComponent implements OnInit{
-  travaux : any[] = [
-    {
-      _id : 1,
-      matricule : '9184 TAA',
-      idGarage : {
-        _id : 1,
-        localisation : 'Analakely'
-      },
-      dateDebut : new Date(),
-      estimationFin : new Date(new Date().getTime() + 240*60000),
-      prix : '50000',
-      resteAPayer : '25000'
-    }
-  ]
+  page = 1;
+  pageMax = 1;
+  travaux : any[] = [];
+  currentUser: any = {};
+
+  constructor(
+      private travailService:TravailService,
+      private activatedRoute:ActivatedRoute,
+  ) {}
+
   ngOnInit(): void {
-    
+    this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+    this.activatedRoute.params.subscribe(params => {
+      this.page = params['page'];
+      this.loadTravaux(this.page);
+    })
+  }
+
+  loadTravaux(page:number): void {
+    const travailFilter = {
+      idClient: this.currentUser._id
+    };
+    this.travailService.filterTravail(page, travailFilter).subscribe(data => {
+      this.pageMax = data.pageMax;
+      this.travaux = data.travaux;
+    })
   }
 }
