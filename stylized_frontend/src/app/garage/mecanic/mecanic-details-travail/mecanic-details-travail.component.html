@@ -3,9 +3,9 @@
         <h5 class="mb-4">Diagnostic sur le vehicule [MATRICULE]</h5>
         <div class="card">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Client : [ Nom du client ]</li>
-                <li class="list-group-item">Tel. Client : [Tel du client]</li>
-                <li class="list-group-item">Estimation de durée : du [Date de début] jusq'au [Estimation de fin]</li>
+                <li class="list-group-item">Client : {{ travail.idClient.nom }}  {{ travail.idClient.prenom }}</li>
+                <li class="list-group-item">Tel. Client : {{ travail.idClient.tel }}</li>
+                <li class="list-group-item">Estimation de durée : du {{ travail.debutTravail | date : 'dd/MM/yyyy à HH:mm' }} jusq'au {{ travail.finEstimation | date : 'dd/MM/yyyy à HH:mm' }}</li>
             </ul>
         </div>
         <div class="row">
@@ -21,10 +21,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @for (diagnostic of diagnostics; track diagnostics) {
+                        @for (diagnostic of diagnostics; track diagnostic) {
                             <tr>
-                                <td>{{ diagnostic.idService.label }}</td>
-                                <td class="text-center">{{ diagnostic.idService.duree }} mn</td>
+                                <td>{{ diagnostic.label }}</td>
+                                <td class="text-center">{{ diagnostic.duree }} mn</td>
                             </tr>
                         }
                         </tbody>
@@ -43,7 +43,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @for (affiliation of affiliations; track affiliations) {
+                        @for (affiliation of affiliations; track affiliation) {
                             <tr>
                                 <td>{{ affiliation.nom }} {{ affiliation.prenom }}</td>
                             </tr>

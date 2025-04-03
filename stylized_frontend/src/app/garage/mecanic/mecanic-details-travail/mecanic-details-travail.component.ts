@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TravailService } from 'src/app/services/travail.service';
 
 
 @Component({
@@ -11,38 +12,28 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './mecanic-details-travail.component.scss'
 })
 export class MecanicDetailsTravailComponent implements OnInit  {
+  idTravail: string = '';
   travail : any = {}
-  diagnostics : any[] = [
-    {
-      _id : 1,
-      idTravail : {},
-      idService : {
-        _id : 1,
-        label : "Verification de moteur",
-        duree : 30,
-        prix : {
-          montant : 30000
-        }
-      }
-    }
-  ]
+  diagnostics : any[] = []
+  affiliations : any[] = []
 
-  affiliations : any[] = [
-    {
-      nom : 'Rabe',
-      prenom : 'Njila'
-    },
-    {
-      nom : 'Andria',
-      prenom : 'Koto'
-    },
-    {
-      nom : 'Rahaja',
-      prenom : 'Tina'
-    },
-  ]
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private travailService:TravailService,
+  ) {}
+
   ngOnInit(): void {
-      
+      this.activateRoute.params.subscribe(params => {
+        this.idTravail = params['id'];
+        this.loadTravail(this.idTravail);
+      })
   }
 
+  loadTravail(idTravail: string): void {
+    this.travailService.getTravailById(idTravail).subscribe(data => {
+      this.travail = data;
+      this.diagnostics = data.selectedService;
+      this.affiliations = data.selectedMecanicien;
+    })
+  }
 }
