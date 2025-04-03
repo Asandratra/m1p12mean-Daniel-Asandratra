@@ -18,10 +18,10 @@
                 @for (travail of travaux; track travail) {
                     <tr>
                         <td>{{ travail.matricule }}</td>
-                        <td class="text-center">{{ travail.nomClient }}</td>
-                        <td class="text-center">{{ travail.telClient }}</td>
-                        <td class="text-center">{{ travail.dateDebut | date : 'dd/MM/yyyy à HH:mm' }} </td>
-                        <td class="text-center">{{ travail.estimationFin | date : 'dd/MM/yyyy à HH:mm' }} </td>
+                        <td class="text-center">{{ travail.idClient.nom }} {{ travail.idClient.prenom }}</td>
+                        <td class="text-center">{{ travail.idClient.tel }}</td>
+                        <td class="text-center">{{ travail.debutTravail | date : 'dd/MM/yyyy à HH:mm' }} </td>
+                        <td class="text-center">{{ travail.finEstimation | date : 'dd/MM/yyyy à HH:mm' }} </td>
                         <td class="text-end">
                             <a class="link-primary" [routerLink]="['/mecanic/travail',travail._id]">Voir diagnostic</a>
                         </td>
@@ -33,8 +33,8 @@
         </div>
         <div class="d-flex justify-content-end">
             <app-pagination
-                [page]=1
-                [pageMax]=2
+                [page]=page
+                [pageMax]=pageMax
                 [url]="'/mecanic/travaux'"
             ></app-pagination>
         </div>
