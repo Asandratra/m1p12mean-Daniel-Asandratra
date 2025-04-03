@@ -15,7 +15,12 @@
                           <label for="role">Client</label>
                           <select class="form-select" id="client" name="client" aria-label="Selection du client" [(ngModel)]="idClient">
                             @for (client of clients; track client) {
-                              <option [value]="client._id">{{ client.nom }} {{ client.prenom }}</option>
+                                @if (idClient && client._id.toString()==idClient.toString()){
+                                    <option [value]="client._id" selected>{{ client.nom }} {{ client.prenom }}</option>
+                                }
+                                @else {
+                                    <option [value]="client._id">{{ client.nom }} {{ client.prenom }}</option>
+                                }
                             }
                           </select>
                         </div>

@@ -55,7 +55,7 @@ export class ClientDetailsGarageComponent implements OnInit{
         alert("Demande de rendez-vous envoyée.");
         this.dateHeure='';
       }, error=> {
-        this.errorMessage=error.message;
+        this.errorMessage="La demande n'a pas pu être envoyée !";
       });
     }
     else{

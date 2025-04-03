@@ -36,7 +36,7 @@ export class ClientLoginComponent implements OnInit {
         sessionStorage.setItem("currentUser",JSON.stringify(data));
         this.router.navigateByUrl('client/garages/1');
       }, error=>{
-        this.errorMessage=error.message;
+        this.errorMessage="Authentification impossible";
       });
     }
     this.signupInfo.username='';

@@ -40,7 +40,7 @@ export class ClientRegisterComponent implements OnInit {
         alert('Inscription validée!');
         this.router.navigateByUrl('client/login');
       }, error=>{
-        this.errorMessage=error.message;
+        this.errorMessage="Une erreur s'est produite lors de l'inscription";
       });
     }
     this.signinInfo.username='';
