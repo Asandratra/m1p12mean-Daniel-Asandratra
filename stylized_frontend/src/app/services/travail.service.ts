@@ -32,4 +32,11 @@ export class TravailService {
   addMecanoToTravail(travailId: string, mecanoIds: string[]): Observable<any> {
     return this.http.put(`${this.apiURL}/addMecano/${travailId}`, mecanoIds);
   }
+
+  updateStatusTravail(travailId: string, status: number): Observable<any> {
+    const statusChange={
+      status : status
+    }
+    return this.http.put(`${this.apiURL}/${travailId}`, statusChange);
+  }
 }
