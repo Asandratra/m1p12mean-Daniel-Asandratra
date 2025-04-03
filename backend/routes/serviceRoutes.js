@@ -31,7 +31,6 @@ router.get('/', async (req, res) => {
                 prix: latestPrix ? latestPrix.montant : null,
             })
         }
-        console.log("services: ", pricedServices);
         res.json(pricedServices);
     } catch (error) {
         res.status(500).json({ message: error.message });
