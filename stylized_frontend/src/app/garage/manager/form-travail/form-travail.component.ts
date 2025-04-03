@@ -42,6 +42,7 @@ export class FormTravailComponent implements OnInit{
   ) {}
 
   ngOnInit() {
+    this.checkClient();
     this.loadClients();
     this.loadServices();
     this.loadMecaniciens();
@@ -53,6 +54,15 @@ export class FormTravailComponent implements OnInit{
       unSelectAllText: 'Déselectionner',
       allowSearchFilter: true
     };
+  }
+
+  checkClient(): void {
+    this.idClient='';
+    const checkClient=JSON.parse(sessionStorage.getItem("clientDeTravail"));
+    if(checkClient){
+      this.idClient=checkClient._id;
+      sessionStorage.removeItem("clientDeTravail");
+    }
   }
 
   loadClients(): void {

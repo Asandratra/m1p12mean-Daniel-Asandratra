@@ -1,0 +1,53 @@
+Demandes de rendez-vous
+
+L'application vise la clientèle possible des garages.
+Nous avons alors mis en place une fonctionnalités de demandes de rendez-vous
+
+Son fonctionnement
+Un client se connecte et vois la liste de garage. Il selectionne le garage où il veut faire réparer sa voiture.
+[Ecran liste des garages]
+
+En selectionnant un garage, il peut voir qui est le manager du garage et son contact, et il a également un formulaire pour envoyer une demande de rendez-vous, sur lequel le client mettra la date et l'heure demandée.
+[Ecran détails garage]
+
+Après avoir envoyer sa demande, le client peut le voir en passant par la liste des rendez-vous, d'où il clique sur le lien 'mes demandes de rendez-vous', et il sera diriger vers la liste de ses demandes de rendez-vous
+[Ecran listes demande de rendez-vous]
+
+Cette liste de demandes présente l'état des demandes, soit elles sont en attente de réponse du garage, soit en attente de confirmation du client.
+
+Si la demande est en confirmation, c'est qu'un manager a vu sa demande et souhaite la confirmation du client pour la date.
+En confirmant, le client crée le rendez-vous et a désormais un rendez-vous avec le garage.
+
+Si la demande est en attente, c'est qu'il attend encore l'action du manager, dans ce cas là, ça se passe comme suit:
+
+Un manager se connecte, et va sur la page de liste de rendez-vous d'où il peut aller vers la page listant les demandes de rendez-vous envoyées au garage.
+[Ecran liste rendez-vous manager]
+Le manager choisi un rendez-vous et peut soit directement le refuser, soit aller vers le formulaire de validation de la demande.
+
+Depuis le formulaire de validation, il peut voir le demandant, la date, et les prochains rendez-vous du garage, pour voir la disponibilté.
+[Ecran formulaire de validation]
+
+Le manager peut modifier la date de rendez-vous.
+Après validation du manager, la demande sera en confirmation.
+
+Rendez-vous
+
+Lorsque la demande de rendez-vous est valider par un manager et confirmer par le client, le rendez-vous sera enregistrer.
+Le client pourra voir la liste de ses rendez-vous encore actif et les annuler si besoin.
+[Ecran liste de rendez-vous client]
+
+Le manager lui peut voir les rendez-vous de son garage, les terminer, et si ils sont terminés, c'est que le rendez-vous s'est efféctué.
+Lorsqu'un rendez-vous est terminé, le manager peut directement créer un travail à partir de ce rendez-vous, travail qui sera rattaché au client.
+[Ecran liste rendez-vous manager]
+Les rendez-vous reste visible jusqu'à ce qu'il soit supprimer par le manager.
+
+Enregistrement de Congé
+
+Nous avons mis en place cette fonctionnalité pour donner une utilité en plus à l'utilisation de cette application pour le manager.
+Le manager peut voir la liste des employés de son garage, managers ou mécaniciens.
+[Ecran liste employés]
+depuis cette liste, il peut aller vers la page pour voir les détails des employés, leurs spécialités, leur congés.
+[Ecran détails employé]
+de cette page de détails d'employé, le manager peut enregistrer les congés de l'employé, pour un jour, ou une intervalle de jour.
+
+Cette fonctionnalité ouvre une approche de gestion de ressources humaines à l'application.

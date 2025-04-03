@@ -110,7 +110,6 @@ export class ManagerDetailsEmployeeComponent implements OnInit {
           alert('Congé enregistré!');
           this.debutConge='';
           this.finConge='';
-          this.congeIntervalle=false;
           this.loadEmployee(this.idEmployee);
           this.loadEmployee(this.idEmployee);
         },error=>{
