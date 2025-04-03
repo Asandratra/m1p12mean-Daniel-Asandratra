@@ -14,22 +14,7 @@ import { TravailService } from 'src/app/services/travail.service';
 export class ManagerTravauxComponent implements OnInit{
   page = 1;
   pageMax = 1;
-  travaux : any[] = [
-    {
-      _id : 1,
-      matricule : '9184 TAA',
-      nomClient : 'Rakoto Bary',
-      telClient : '0338194738',
-      idGarage : {
-        _id : 1,
-        localisation : 'Analakely'
-      },
-      dateDebut : new Date(),
-      estimationFin : new Date(new Date().getTime() + 240*60000),
-      prix : '50000',
-      resteAPayer : '25000'
-    }
-  ];
+  travaux : any[] = [];
 
   constructor(
     private travailService:TravailService,

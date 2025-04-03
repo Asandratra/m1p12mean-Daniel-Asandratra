@@ -20,4 +20,16 @@ export class TravailService {
   filterTravail(page: number, travail: any): Observable<any> {
     return this.http.post(`${this.apiURL}/search/${page}`, travail);
   }
+
+  getTravailById(id: string): Observable<any> {
+    return this.http.get(`${this.apiURL}/${id}`)
+  }
+
+  addServicesToTravail(travailId: string, serviceIds: string[]): Observable<any> {
+    return this.http.put(`${this.apiURL}/addServices/${travailId}`, serviceIds);
+  }
+
+  addMecanoToTravail(travailId: string, mecanoIds: string[]): Observable<any> {
+    return this.http.put(`${this.apiURL}/addMecano/${travailId}`, mecanoIds);
+  }
 }

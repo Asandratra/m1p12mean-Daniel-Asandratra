@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Travail = require('../model/Travail');
+const Prix = require('../model/Prix');
+const { findById } = require('../model/RendezVous');
+const Payement = require('../model/Payement');
 
 const limit = 10;
 
@@ -36,10 +39,16 @@ router.post('/search/:page', async (req, res) => {
                 finEstimation = new Date(travail.debutTravail);
                 finEstimation.setMinutes(finEstimation.getMinutes() + totalDuree);
             }
+            const totalPayerResult = await Payement.aggregate([
+                { $match: { idTravail: travail._id } },
+                { $group: { _id: null, totalPayer: { $sum: "$montant" } } }
+            ]);
+            const totalPayer = totalPayerResult.length > 0 ? totalPayerResult[0].totalPayer : 0;
             travauxTab.push({
                 ...travail._doc,
                 totalDuree,
                 finEstimation,
+                totalPayer,
             })
         }
         const response = {
@@ -52,6 +61,47 @@ router.post('/search/:page', async (req, res) => {
     }
 })
 
+//Read travail by id
+router.get('/:id', async (req, res) => {
+    try{
+        const travail = await Travail.findById(req.params.id)
+            .populate('idClient')
+            .populate('selectedService')
+            .populate('selectedMecanicien')
+        const totalDuree = travail.selectedService.reduce((sum, service) => sum + (service.duree || 0), 0);
+        let finEstimation = null;
+        if (travail.debutTravail) {
+            finEstimation = new Date(travail.debutTravail);
+            finEstimation.setMinutes(finEstimation.getMinutes() + totalDuree);
+        }
+        const serviceTab = [];
+        for (const service of travail.selectedService) {
+            const latestPrix = await Prix.findOne({ idService: service._id })
+                .sort({ date: -1 }) // Sort by date (descending) to get the latest price
+                .select('montant'); // Select only the montant field
+            serviceTab.push({
+                ...service._doc,
+                prix: latestPrix ? latestPrix.montant : null,
+            })
+        }
+        const totalPayerResult = await Payement.aggregate([
+            { $match: { idTravail: travail._id } },
+            { $group: { _id: null, totalPayer: { $sum: "$montant" } } }
+        ]);
+        const totalPayer = totalPayerResult.length > 0 ? totalPayerResult[0].totalPayer : 0;
+        const selectedTravail = {
+            ...travail._doc,
+            totalDuree,
+            finEstimation,
+            selectedService: serviceTab,
+            totalPayer,
+        }
+        res.json(selectedTravail);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 //Read all Travaux
 router.get('/', async (req, res) => {
     try{
@@ -59,6 +109,74 @@ router.get('/', async (req, res) => {
         res.json(travaux);
     } catch (error) {
         res.status(500).json({ message: error.message });
+    }
+});
+
+const populateTravail = async (id) => {
+    const travail = await Travail.findById(id)
+        .populate('idClient')
+        .populate('selectedService')
+        .populate('selectedMecanicien')
+    const totalDuree = travail.selectedService.reduce((sum, service) => sum + (service.duree || 0), 0);
+    let finEstimation = null;
+    if (travail.debutTravail) {
+        finEstimation = new Date(travail.debutTravail);
+        finEstimation.setMinutes(finEstimation.getMinutes() + totalDuree);
+    }
+    const serviceTab = [];
+    for (const service of travail.selectedService) {
+        const latestPrix = await Prix.findOne({ idService: service._id })
+            .sort({ date: -1 }) // Sort by date (descending) to get the latest price
+            .select('montant'); // Select only the montant field
+        serviceTab.push({
+            ...service._doc,
+            prix: latestPrix ? latestPrix.montant : null,
+        })
+    }
+    return {
+        ...travail._doc,
+        totalDuree,
+        finEstimation,
+        selectedService: serviceTab
+    }
+}
+
+//add service to travail
+router.put('/addServices/:id', async (req, res) => {
+    try{
+        const id = req.params.id;
+        const travail = await Travail.findById(id)
+        travail.selectedService = [...new Set([...travail.selectedService, ...req.body])];
+        const prices = await Prix.aggregate([
+            { $match: { idService: { $in: travail.selectedService } } },
+            { $sort: { date: -1 } }, // Get the latest price by sorting descending
+            { 
+                $group: { 
+                    _id: "$idService", 
+                    latestPrice: { $first: "$montant" } 
+                } 
+            }
+        ]);
+        travail.prix = prices.reduce((sum, p) => sum + (p.latestPrice || 0), 0);
+        await travail.save();
+        const updatedTravail = await populateTravail(id);
+        res.json(updatedTravail);
+    } catch (error) {
+        res.status(400).json({ massage: error.message });
+    }
+});
+
+//add mecano to travail
+router.put('/addMecano/:id', async (req, res) => {
+    try{
+        const id = req.params.id;
+        const travail = await Travail.findById(id)
+        travail.selectedMecanicien = [...new Set([...travail.selectedMecanicien, ...req.body])];
+        await travail.save();
+        const updatedTravail = await populateTravail(id);
+        res.json(updatedTravail);
+    } catch (error) {
+        res.status(400).json({ massage: error.message });
     }
 });
 

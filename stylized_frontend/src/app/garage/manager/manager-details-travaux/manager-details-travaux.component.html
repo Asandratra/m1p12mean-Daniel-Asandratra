@@ -1,15 +1,15 @@
 <div class="card d-flex justify-content-center">
     <div class="card-body col-x1-12">
-        <h5 class="mb-4">Diagnostic sur le vehicule [MATRICULE]</h5>
+        <h5 class="mb-4">Diagnostic sur le vehicule {{ travail.matricule }}</h5>
         <div class="row">
             <div class="col-sm-7">
                 <div class="card">
                     <ul class="list-group list-group-flush" style="font-size: larger;">
-                        <li class="list-group-item">Client : [ Nom du client ]</li>
-                        <li class="list-group-item">Tel. Client : [Tel du client]</li>
-                        <li class="list-group-item">Estimation de durée : du [Date de début] jusq'au [Estimation de fin]</li>
-                        <li class="list-group-item">Prix total : [prix total du travail]</li>
-                        <li class="list-group-item">Reste à payer : [montant restant à paye]</li>
+                        <li class="list-group-item">Client : {{ travail.idClient?.nom }} {{ travail.idClient?.prenom }}</li>
+                        <li class="list-group-item">Tel. Client : {{ travail.idClient?.tel }}</li>
+                        <li class="list-group-item">Estimation de durée : du {{ travail.debutTravail | date : 'dd/MM/yyyy à HH:mm' }} jusqu'au {{ travail.finEstimation | date : 'dd/MM/yyyy à HH:mm' }}</li>
+                        <li class="list-group-item">Prix total : Ar {{ travail.prix }}</li>
+                        <li class="list-group-item">Reste à payer : Ar {{ travail.prix - travail.totalPayer }}</li>
                     </ul>
                 </div>
             </div>
@@ -17,15 +17,30 @@
                 <div class="card">
                     <div class="card-body">
                     <h5 class="card-title">Enregistrer un paiement</h5>
-                    <form>
+                    <form (ngSubmit)="addPaiement()" #addPaiementFrom="ngForm">
                         <div class="form-group">
                             <label>Date de paiement</label>
-                            <input type="datetime-local" class="form-control" id="date-heure">
+                            <input
+                              type="datetime-local"
+                              class="form-control"
+                              id="date-heure"
+                              name="date"
+                              [(ngModel)]="paiement.date"
+                            >
                         </div>
                         <div class="form-group">
-                            <label>Montant</label>
-                            <input type="number" class="form-control" id="montant">
+                            <label>Montant (Ar)</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="montant"
+                              name="montant"
+                              [(ngModel)]="paiement.montant"
+                            >
                         </div>
+                        @if (paiementError) {
+                          <p class="text text-danger">{{paiementError}}</p>
+                        }
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary text-end">Enregistrer</button>
                         </div>
@@ -40,7 +55,7 @@
             <div class="col-sm-6">
                 <h5 class="mb-4">Services à effectuer</h5>
                 <div>
-                    <form action="">
+                    <form (ngSubmit)="addServices()" #addServiceForm="ngForm">
                         <div class="row">
                             <div class="col-sm-8">
                                 <div class="form-group">
@@ -49,8 +64,13 @@
                                         [settings]="dropdownSettings"
                                         [data]="servicesDropdownList"
                                         [(ngModel)]="selectedService"
+                                        id="services"
+                                        name="services"
                                         >
                                     </ng-multiselect-dropdown>
+                                    @if (serviceError) {
+                                      <p class="text text-danger">{{serviceError}}</p>
+                                    }
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -70,11 +90,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @for (diagnostic of diagnostics; track diagnostics) {
+                        @for (diagnostic of diagnostics; track diagnostic) {
                             <tr>
-                                <td>{{ diagnostic.idService.label }}</td>
-                                <td class="text-center">{{ diagnostic.idService.duree }} mn</td>
-                                <td class="text-center">Ar {{ diagnostic.idService.prix.montant | number }}</td>
+                                <td>{{ diagnostic.label }}</td>
+                                <td class="text-center">{{ diagnostic.duree }} mn</td>
+                                <td class="text-center">Ar {{ diagnostic.prix | number }}</td>
                             </tr>
                         }
                         </tbody>
@@ -86,7 +106,7 @@
                 <div class="row">
                     <h5 class="mb-4">Affiliations</h5>
                     <div>
-                        <form action="">
+                        <form (ngSubmit)="addMecano()" #addMecanoForm="ngForm">
                             <div class="row">
                                 <div class="col-sm-8">
                                     <div class="form-group">
@@ -95,8 +115,13 @@
                                             [settings]="dropdownSettings"
                                             [data]="mecanicienDropdownList"
                                             [(ngModel)]="selectedMecanicien"
+                                            id="mecano"
+                                            name="mecano"
                                             >
                                         </ng-multiselect-dropdown>
+                                        @if (mecanoError) {
+                                          <p class="text text-danger">{{mecanoError}}</p>
+                                        }
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -115,7 +140,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @for (affiliation of affiliations; track affiliations) {
+                        @for (affiliation of affiliations; track affiliation) {
                             <tr>
                                 <td>{{ affiliation.nom }} {{ affiliation.prenom }}</td>
                             </tr>
