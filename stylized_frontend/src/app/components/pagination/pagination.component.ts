@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pagination',
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss'
 })

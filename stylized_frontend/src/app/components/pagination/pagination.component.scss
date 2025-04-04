@@ -1,10 +1,10 @@
-.disabled-link{
+a.disabledLink{
     pointer-events: none;
     color: gray;
     text-decoration: none;
 }
 
-a.active-page{
+a.activePage{
     font-weight: bold;
     color: white;
     background-color: #007bff;
