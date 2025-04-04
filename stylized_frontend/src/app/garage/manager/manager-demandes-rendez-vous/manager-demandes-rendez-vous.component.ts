@@ -23,10 +23,10 @@ export class ManagerDemandesRendezVousComponent implements OnInit{
 
   status : string[] = ['En attente','En confirmation','Confirmée','Refusée']
 
-  page = 0;
+  page = 1;
   nombreElement = 0 ;
   nombreMaxElement = 0;
-  pageMax = 0;
+  pageMax = 1;
 
   router = inject(Router);
 
