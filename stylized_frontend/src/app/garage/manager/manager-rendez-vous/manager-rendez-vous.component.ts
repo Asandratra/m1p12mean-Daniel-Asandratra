@@ -24,10 +24,10 @@ export class ManagerRendezVousComponent implements OnInit{
 
   status : string[] = ['Actif','Terminé','Annulé'];
 
-  page = 0;
+  page = 1;
   nombreElement = 0 ;
   nombreMaxElement = 0;
-  pageMax = 0;
+  pageMax = 1;
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(sessionStorage.getItem('currentUser')!);

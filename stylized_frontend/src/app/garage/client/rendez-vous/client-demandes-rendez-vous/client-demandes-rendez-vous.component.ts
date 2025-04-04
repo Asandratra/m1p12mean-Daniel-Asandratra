@@ -23,10 +23,10 @@ export class ClientDemandesRendezVousComponent implements OnInit{
 
   status : string[] = ['En attente','En confirmation','Confirmée','Refusée']
 
-  page = 0;
+  page = 1;
   nombreElement = 0 ;
   nombreMaxElement = 0;
-  pageMax = 0;
+  pageMax = 1;
 
   constructor(private demandeRDVService:DemandeRDVService, private rendezvousService:RendezVousService, private activatedRoute:ActivatedRoute){}
 
